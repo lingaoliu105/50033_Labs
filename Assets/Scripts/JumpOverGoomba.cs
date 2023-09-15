@@ -33,7 +33,7 @@ public class JumpOverGoomba : MonoBehaviour
             {
                 _countScoreState = false;
                 Score++;
-                scoreText.text = "Score: " + Score.ToString();
+                scoreText.text = "Score: " + Score;
                 Debug.Log(Score);
             }
         }

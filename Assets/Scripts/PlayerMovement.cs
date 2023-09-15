@@ -15,10 +15,7 @@ public class PlayerMovement : MonoBehaviour
 
     private SpriteRenderer marioSprite;
     private bool faceRightState = true;
-    
-    public TextMeshProUGUI scoreText;
-    public GameObject enemies;
-    public JumpOverGoomba JumpOverGoomba;
+
     public GameManager GameManager;
 
     public Vector3 DefaultPostion;
@@ -40,8 +37,6 @@ public class PlayerMovement : MonoBehaviour
         Application.targetFrameRate =  30;
         marioBody = GetComponent<Rigidbody2D>();
         marioSprite = GetComponent<SpriteRenderer>();
-
-
     }
 
     // FixedUpdate is called 50 times a second

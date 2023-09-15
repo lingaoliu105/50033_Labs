@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        GameOverDisplay.OnGameOver();
+        GameOverDisplay.OnGameOver(JumpOverGoomba.Score);
     }
     
     public void RestartButtonCallback(int input)
