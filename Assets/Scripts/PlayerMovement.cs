@@ -70,15 +70,13 @@ public class PlayerMovement : MonoBehaviour
         // toggle state
         if (Input.GetKeyDown("a") && faceRightState){
             faceRightState = false;
-            marioSprite.flipX = false;
+            marioSprite.flipX = true;
         }
 
         if (Input.GetKeyDown("d") && !faceRightState){
             faceRightState = true;
-            marioSprite.flipX = true;
+            marioSprite.flipX = false;
         }
-
-        // other instructions
     }
     
     void OnTriggerEnter2D(Collider2D other)
@@ -87,11 +85,6 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.Log("Collided with goomba!");
         }
-    }
-
-    public Vector3 GetDefaultPostion()
-    {
-        return DefaultPostion;
     }
 
     public void Reset()
