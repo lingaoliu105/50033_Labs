@@ -57,6 +57,5 @@ public class EnemyMovement : MonoBehaviour
         moveRight *= -1;
         ComputeVelocity();
         Movegoomba();
-        
     }
 }

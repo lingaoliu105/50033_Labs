@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        Time.timeScale = 0.0f;
         GameOverDisplay.OnGameOver(JumpOverGoomba.Score);
     }
     

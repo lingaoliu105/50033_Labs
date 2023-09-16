@@ -160,11 +160,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   maxSpeed: 20
-  upSpeed: 10
+  upSpeed: 15
   gameManager: {fileID: 1067423194}
   defaultPosition: {x: -40, y: -2, z: 0}
   marioAnimator: {fileID: 34960370}
-  marioAudio: {fileID: 0}
+  marioAudio: {fileID: 34960371}
+  marioDeath: {fileID: 8300000, guid: 88212c535224f604eaa6980d69db20e1, type: 3}
+  deathImpulse: 10
 --- !u!50 &34960365
 Rigidbody2D:
   serializedVersion: 4
