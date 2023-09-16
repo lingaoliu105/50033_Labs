@@ -3,40 +3,66 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 10;
-    private Rigidbody2D marioBody;
+    private Rigidbody2D _marioBody;
     public float maxSpeed = 20;
 
     public float upSpeed = 30;
-    private bool onGroundState = true;
+    private bool _onGroundState = true;
 
-    private SpriteRenderer marioSprite;
-    private bool faceRightState = true;
+    private SpriteRenderer _marioSprite;
+    private bool _faceRightState = true;
 
-    public GameManager GameManager;
+    public GameManager gameManager;
 
-    public Vector3 DefaultPostion;
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.gameObject.CompareTag("Ground")) onGroundState = true;
-        if (col.gameObject.CompareTag("Enemy"))
-        {
-            Debug.Log("Collided with goomba!");
-            GameManager.GameOver();
-            Time.timeScale = 0.0f;
-        }
-    }
+    public Vector3 defaultPosition;
+
+    public Animator marioAnimator;
+    public AudioSource marioAudio;
+
     
     // Start is called before the first frame update
     void Start()
     {
         // Set to be 30 FPS
         Application.targetFrameRate =  30;
-        marioBody = GetComponent<Rigidbody2D>();
-        marioSprite = GetComponent<SpriteRenderer>();
+        _marioBody = GetComponent<Rigidbody2D>();
+        _marioSprite = GetComponent<SpriteRenderer>();
+
+        if (marioAnimator == null)
+        {
+            marioAnimator = GetComponent<Animator>();
+        }
+        marioAnimator.SetBool("onGround",_onGroundState);
+        
+        if (marioAudio == null)
+        {
+            marioAudio = GetComponent<AudioSource>();
+        }
+    }
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Ground") && !_onGroundState)
+        {
+            _onGroundState = true;
+            marioAnimator.SetBool("onGround",_onGroundState);
+            
+        }
+        if (col.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("Collided with goomba!");
+            gameManager.GameOver();
+            Time.timeScale = 0.0f;
+        }
+    }
+    void PlayJumpSound()
+    {
+        // play jump sound
+        marioAudio.PlayOneShot(marioAudio.clip);
     }
 
     // FixedUpdate is called 50 times a second
@@ -46,37 +72,47 @@ public class PlayerMovement : MonoBehaviour
         if (Mathf.Abs(moveHorizontal) > 0)
         {
             Vector2 movement = new Vector2(moveHorizontal, 0);
-            if (marioBody.velocity.magnitude < maxSpeed)
+            if (_marioBody.velocity.magnitude < maxSpeed)
             {
                 
-                marioBody.AddForce(movement * speed);
+                _marioBody.AddForce(movement * speed);
             }
             
         }
 
         if (Input.GetKeyUp("a") || Input.GetKeyUp("d"))
         {
-            marioBody.velocity = Vector2.zero;
+            _marioBody.velocity = Vector2.zero;
         }
         
-        if (Input.GetKeyDown("space") && onGroundState){
-            marioBody.AddForce(Vector2.up * upSpeed, ForceMode2D.Impulse);
-            onGroundState = false;
+        if (Input.GetKeyDown("space") && _onGroundState){
+            _marioBody.AddForce(Vector2.up * upSpeed, ForceMode2D.Impulse);
+            _onGroundState = false;
+            marioAnimator.SetBool("onGround",_onGroundState);
         }
     }
     
     
     void Update(){
         // toggle state
-        if (Input.GetKeyDown("a") && faceRightState){
-            faceRightState = false;
-            marioSprite.flipX = true;
+        if (Input.GetKeyDown("a") && _faceRightState){
+            if (_marioBody.velocity.x > 0.1f)
+            {
+                marioAnimator.SetTrigger("onSkid");
+            }
+            _faceRightState = false;
+            _marioSprite.flipX = true;
         }
 
-        if (Input.GetKeyDown("d") && !faceRightState){
-            faceRightState = true;
-            marioSprite.flipX = false;
+        if (Input.GetKeyDown("d") && !_faceRightState){
+            if (_marioBody.velocity.x < -0.1f)
+            {
+                marioAnimator.SetTrigger("onSkid");
+            }
+            _faceRightState = true;
+            _marioSprite.flipX = false;
         }
+        marioAnimator.SetFloat("xSpeed",MathF.Abs(_marioBody.velocity.x));
     }
     
     void OnTriggerEnter2D(Collider2D other)
@@ -89,9 +125,9 @@ public class PlayerMovement : MonoBehaviour
 
     public void Reset()
     {
-        marioBody.transform.position = DefaultPostion;
+        _marioBody.transform.position = defaultPosition;
         // reset sprite direction
-        faceRightState = true;
-        marioSprite.flipX = false;
+        _faceRightState = true;
+        _marioSprite.flipX = false;
     }
 }
