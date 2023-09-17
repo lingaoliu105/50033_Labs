@@ -7,11 +7,11 @@ using UnityEngine.Serialization;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 20;
+    public float speed = 15;
     private Rigidbody2D _marioBody;
-    public float maxSpeed = 60;
+    public float maxSpeed = 45;
 
-    public float upSpeed = 120;
+    public float upSpeed = 18;
     private bool _onGroundState = true;
 
     private SpriteRenderer _marioSprite;
