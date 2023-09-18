@@ -44,8 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a49c27fc1788374cbdb80419527f953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameOverDisplay: {fileID: 8733810481950660530, guid: 3ecc16d39378b3341952089c223e7e4c, type: 3}
+  GameOverDisplay: {fileID: 0}
   MarioMovement: {fileID: 4447861143408877579, guid: 8abe7d48295046944952f1c2914e4332, type: 3}
   ScoreText: {fileID: 0}
   JumpOverGoomba: {fileID: 96197383334191257, guid: 8abe7d48295046944952f1c2914e4332, type: 3}
   enemies: {fileID: 0}
+  GameOverScreen: {fileID: 0}

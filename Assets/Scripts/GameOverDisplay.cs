@@ -31,7 +31,6 @@ public class GameOverDisplay : MonoBehaviour
     public void OnGameOver(int score)
     {
         GOScoreText.text = "Score: " + score;
-        gameObject.SetActive(false); 
         gameObject.SetActive(true);
     }
 

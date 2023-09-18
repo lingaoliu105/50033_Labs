@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour
 
     public JumpOverGoomba JumpOverGoomba;
 
-    public GameObject enemies;  
+    public GameObject enemies;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +30,6 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        Time.timeScale = 0.0f;
         GameOverDisplay.OnGameOver(JumpOverGoomba.Score);
     }
     
