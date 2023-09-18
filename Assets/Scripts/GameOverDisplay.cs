@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -6,32 +7,36 @@ using UnityEngine;
 
 public class GameOverDisplay : MonoBehaviour
 {
-
-    public GameObject GameOverScreen;
-
-    private TextMeshProUGUI GOScoreText;
+    
+    public TextMeshProUGUI GOScoreText;
     // Start is called before the first frame update
     void Start()
     {
         // update actual score
-        GOScoreText = GetComponentInChildren<TextMeshProUGUI>();
-        GameOverScreen.SetActive(false);
+        // GOScoreText = GetComponentInChildren<TextMeshProUGUI>();
+        gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        // Debug.Log(GOScoreText);
+
+    }
+
+    private void FixedUpdate()
+    {
     }
 
     public void OnGameOver(int score)
     {
         GOScoreText.text = "Score: " + score;
-        GameOverScreen.SetActive(true);
+        gameObject.SetActive(false); 
+        gameObject.SetActive(true);
     }
 
     public void OnGameRestart()
     {
-        GameOverScreen.SetActive(false);
+        gameObject.SetActive(false);
     }
 }

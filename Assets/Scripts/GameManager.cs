@@ -13,11 +13,12 @@ public class GameManager : MonoBehaviour
 
     public JumpOverGoomba JumpOverGoomba;
 
-    public GameObject enemies;
+    public GameObject enemies;  
     // Start is called before the first frame update
     void Start()
     {
         Debug.Log("game manager start");
+        Debug.Log(GameOverDisplay);
     }
 
     // Update is called once per frame
@@ -34,7 +35,6 @@ public class GameManager : MonoBehaviour
     
     public void RestartButtonCallback(int input)
     {
-        Debug.Log("Restart!");
         // reset everything
         ResetGame();
         // resume time
