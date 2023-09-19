@@ -31,6 +31,8 @@ public class PlayerMovement : MonoBehaviour
     public float marioHeight;
 
     public float marioWidth;
+
+    public float multiImpulse = 1.2f;
     // state
     [System.NonSerialized]
     public bool alive = true;
@@ -53,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
         {
             marioAudio = GetComponent<AudioSource>();
         }
-        
+
     }
     void OnCollisionEnter2D(Collision2D col)
     {
@@ -69,18 +71,18 @@ public class PlayerMovement : MonoBehaviour
             {
                 // Get the first contact point (you can iterate through all if needed)
                 ContactPoint2D contactPoint = col.contacts[0];
-            
+
                 // Get the exact collision point
                 Vector2 collisionPoint = contactPoint.point;
-                
+
                 if (isUnderneath(collisionPoint))
                 {
-                    marioAnimator.SetBool("onGround",true);
+                    marioAnimator.SetBool("onGround", true);
                     var enemy = col.gameObject;
                     Debug.Log("kill enemy here");
                     var jumpScript = GetComponent<JumpOverGoomba>();
                     jumpScript.UpdateScore(1);
-                    Jump();
+                    Jump(multiImpulse);
                 }
                 else
                 {
@@ -88,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
                     marioAnimator.Play("mario_die");
                     marioAudio.PlayOneShot(marioDeath);
                     alive = false;
-                    
+
                 }
             }
         }
@@ -97,13 +99,13 @@ public class PlayerMovement : MonoBehaviour
     bool isUnderneath(Vector2 point)
     {
         var position = transform.position;
-        Debug.DrawLine(position,point,Color.red);
-        float right = position.x + marioWidth/2;
-        float left = position.x - marioWidth/2;
-        float foot = position.y - marioHeight/2;
+        Debug.DrawLine(position, point, Color.red);
+        float right = position.x + marioWidth / 2;
+        float left = position.x - marioWidth / 2;
+        float foot = position.y - marioHeight / 2;
         return point.x > left && point.x < right && (Mathf.Abs(point.y - foot) < 0.03 || point.y < foot);
     }
-    
+
     //attached to jump anim event
     void PlayJumpSound()
     {
@@ -140,23 +142,23 @@ public class PlayerMovement : MonoBehaviour
 
             if (Input.GetKeyDown("space") && _onGroundState)
             {
-                Jump();
+                Jump(1.0f);
             }
         }
     }
 
-    void Jump()
+    void Jump(float multi)
     {
-        _marioBody.AddForce(Vector2.up * upSpeed, ForceMode2D.Impulse);
+        _marioBody.AddForce(Vector2.up * upSpeed * multi, ForceMode2D.Impulse);
         _onGroundState = false;
         marioAnimator.SetBool("onGround", _onGroundState);
-        
+
     }
 
 
     void Update()
     {
-        Debug.DrawLine(transform.position,new Vector3(0,0,0),Color.red);
+        Debug.DrawLine(transform.position, new Vector3(0, 0, 0), Color.red);
         // toggle state
         if (Input.GetKeyDown("a") && _faceRightState)
         {

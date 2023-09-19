@@ -21,7 +21,6 @@ public class CameraController : MonoBehaviour
     private float lowY;
     private float viewportHalfWidth;
     private float viewportHalfHeight;
-    //public float smooth = 20;
     // Start is called before the first frame update
     void Start()
     {

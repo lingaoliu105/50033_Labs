@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: direction
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 1656830948279760610, guid: 5b8fdde48757e1644847ba47a68b7c08, type: 3}
+      propertyPath: horizontalSpeed
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 3450241964612333193, guid: 5b8fdde48757e1644847ba47a68b7c08, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14.49
@@ -801,6 +805,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6753272853400255749}
     m_Modifications:
+    - target: {fileID: 1656830948279760610, guid: 5b8fdde48757e1644847ba47a68b7c08, type: 3}
+      propertyPath: horizontalSpeed
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 3450241964612333193, guid: 5b8fdde48757e1644847ba47a68b7c08, type: 3}
       propertyPath: m_LocalPosition.x
       value: 13.31
@@ -2994,7 +3002,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.43137255, g: 0.01375042, b: 0.9716981, a: 0}
+  m_BackGroundColor: {r: 0.47912958, g: 0.860025, b: 0.9150943, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -3515,6 +3523,7 @@ MonoBehaviour:
   deathImpulse: 10
   marioHeight: 1
   marioWidth: 1.5
+  multiImpulse: 1.2
 --- !u!4 &4514280153690971558
 Transform:
   m_ObjectHideFlags: 0
