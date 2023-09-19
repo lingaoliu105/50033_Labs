@@ -28,16 +28,16 @@ public class JumpOverGoomba : MonoBehaviour
         }
 
         // when jumping, and Goomba is near Mario and we haven't registered our score
-        if (!_onGroundState && _countScoreState)
-        {
-            if (Mathf.Abs(transform.position.x - enemyLocation.position.x) < 0.5f)
-            {
-                _countScoreState = false;
-                Score++;
-                scoreText.text = "Score: " + Score;
-                Debug.Log(Score);
-            }
-        }
+        // if (!_onGroundState && _countScoreState)
+        // {
+        //     if (Mathf.Abs(transform.position.x - enemyLocation.position.x) < 0.5f)
+        //     {
+        //         _countScoreState = false;
+        //         Score++;
+        //         scoreText.text = "Score: " + Score;
+        //         Debug.Log(Score);
+        //     }
+        // }
     }
 
     void OnCollisionEnter2D(Collision2D col)
@@ -59,12 +59,10 @@ public class JumpOverGoomba : MonoBehaviour
 
     public void UpdateScore(int delta)
     {
-        if (_countScoreState)
-        {
-            _countScoreState = false;
-            Score+= delta;
-            scoreText.text = "Score: " + Score;
-            Debug.Log(Score);
-        }
+        _countScoreState = false;
+        Score+= delta;
+        scoreText.text = "Score: " + Score;
+        Debug.Log(Score);
+        
     }
 }
