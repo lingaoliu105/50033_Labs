@@ -27,6 +27,10 @@ public class PlayerMovement : MonoBehaviour
     public Transform gameCamera;
 
     public float deathImpulse = 30;
+
+    public float marioHeight;
+
+    public float marioWidth;
     // state
     [System.NonSerialized]
     public bool alive = true;
@@ -49,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
         {
             marioAudio = GetComponent<AudioSource>();
         }
+        
     }
     void OnCollisionEnter2D(Collision2D col)
     {
@@ -60,14 +65,46 @@ public class PlayerMovement : MonoBehaviour
         }
         if (col.gameObject.CompareTag("Enemy") && alive)
         {
-            Debug.Log("Collided with goomba!");
-
-            // play death animation
-            marioAnimator.Play("mario_die");
-            marioAudio.PlayOneShot(marioDeath);
-            alive = false;
+            if (col.contacts.Length > 0)
+            {
+                // Get the first contact point (you can iterate through all if needed)
+                ContactPoint2D contactPoint = col.contacts[0];
+            
+                // Get the exact collision point
+                Vector2 collisionPoint = contactPoint.point;
+                
+                if (isUnderneath(collisionPoint))
+                {
+                    marioAnimator.SetBool("onGround",true);
+                    var enemy = col.gameObject;
+                    Debug.Log("kill enemy here");
+                    var jumpScript = GetComponent<JumpOverGoomba>();
+                    jumpScript.UpdateScore(1);
+                    Jump();
+                }
+                else
+                {
+                    // play death animation
+                    marioAnimator.Play("mario_die");
+                    marioAudio.PlayOneShot(marioDeath);
+                    alive = false;
+                    
+                }
+            }
         }
     }
+
+    bool isUnderneath(Vector2 point)
+    {
+        var position = transform.position;
+        Debug.DrawLine(position,point,Color.red);
+        float right = position.x + marioWidth/2;
+        float left = position.x - marioWidth/2;
+        float foot = position.y - marioHeight/2;
+        return point.x > left && point.x < right && (Mathf.Abs(point.y - foot) < 0.03 || point.y < foot);
+    }
+    
+    //attached to jump anim event
     void PlayJumpSound()
     {
         // play jump sound
@@ -103,16 +140,23 @@ public class PlayerMovement : MonoBehaviour
 
             if (Input.GetKeyDown("space") && _onGroundState)
             {
-                _marioBody.AddForce(Vector2.up * upSpeed, ForceMode2D.Impulse);
-                _onGroundState = false;
-                marioAnimator.SetBool("onGround", _onGroundState);
+                Jump();
             }
         }
+    }
+
+    void Jump()
+    {
+        _marioBody.AddForce(Vector2.up * upSpeed, ForceMode2D.Impulse);
+        _onGroundState = false;
+        marioAnimator.SetBool("onGround", _onGroundState);
+        
     }
 
 
     void Update()
     {
+        Debug.DrawLine(transform.position,new Vector3(0,0,0),Color.red);
         // toggle state
         if (Input.GetKeyDown("a") && _faceRightState)
         {

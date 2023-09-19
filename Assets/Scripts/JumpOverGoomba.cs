@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -54,5 +55,16 @@ public class JumpOverGoomba : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawCube(transform.position - transform.up * maxDistance, boxSize);
+    }
+
+    public void UpdateScore(int delta)
+    {
+        if (_countScoreState)
+        {
+            _countScoreState = false;
+            Score+= delta;
+            scoreText.text = "Score: " + Score;
+            Debug.Log(Score);
+        }
     }
 }
