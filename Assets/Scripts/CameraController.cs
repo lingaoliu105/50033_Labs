@@ -89,11 +89,11 @@ public class CameraController : MonoBehaviour
         {
             if (desiredX <= startX)
             {
-                this.transform.position = new Vector3(startX, desiredY, this.transform.position.z);
+                this.transform.position = new Vector3(startX, this.transform.position.y, this.transform.position.z);
             }
             if (desiredX >= endX)
             {
-                this.transform.position = new Vector3(endX, desiredY, this.transform.position.z);
+                this.transform.position = new Vector3(endX, this.transform.position.y, this.transform.position.z);
             }
             if (desiredY >= upY)
             {
@@ -101,7 +101,7 @@ public class CameraController : MonoBehaviour
             }
             if (desiredY <= lowY)
             {
-                this.transform.position = new Vector3(desiredX, lowY, this.transform.position.z);
+                this.transform.position = new Vector3(this.transform.position.x, lowY, this.transform.position.z);
             }
         }
     }
