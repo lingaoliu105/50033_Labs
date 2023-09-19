@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     public Animator marioAnimator;
     public AudioSource marioAudio;
     public AudioClip marioDeath;
+    public Transform gameCamera;
 
     public float deathImpulse = 30;
     // state
@@ -160,6 +161,7 @@ public class PlayerMovement : MonoBehaviour
         _faceRightState = true;
         _marioSprite.flipX = false;
         marioAnimator.SetTrigger("gameRestart");
+        gameCamera.position = new Vector3(0, 0, -10);
         alive = true;
     }
 }
