@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
         {
             if (eachChild.GetComponent<EnemyMovement>())
             {
-                eachChild.transform.localPosition = eachChild.GetComponent<EnemyMovement>().startPosition;
+                eachChild.GetComponent<EnemyMovement>().ResetPosition();
             }
         }
         GameOverDisplay.OnGameRestart();

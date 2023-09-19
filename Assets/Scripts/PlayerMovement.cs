@@ -70,12 +70,12 @@ public class PlayerMovement : MonoBehaviour
             if (col.contacts.Length > 0)
             {
                 // Get the first contact point (you can iterate through all if needed)
-                ContactPoint2D contactPoint = col.contacts[0];
-
-                // Get the exact collision point
-                Vector2 collisionPoint = contactPoint.point;
-
-                if (isUnderneath(collisionPoint))
+                // ContactPoint2D contactPoint = col.contacts[0];
+                //
+                // // Get the exact collision point
+                // Vector2 collisionPoint = contactPoint.point;
+                Vector2 otherPosition = col.gameObject.transform.position;
+                if (isUnderneath(otherPosition))
                 {
                     marioAnimator.SetBool("onGround", true);
                     var enemy = col.gameObject;
@@ -99,11 +99,11 @@ public class PlayerMovement : MonoBehaviour
     bool isUnderneath(Vector2 point)
     {
         var position = transform.position;
-        Debug.DrawLine(position, point, Color.red);
+        // Debug.DrawLine(position,point,Color.red);
         float right = position.x + marioWidth / 2;
         float left = position.x - marioWidth / 2;
         float foot = position.y - marioHeight / 2;
-        return point.x > left && point.x < right && (Mathf.Abs(point.y - foot) < 0.03 || point.y < foot);
+        return point.x > left && point.x < right && point.y < foot;
     }
 
     //attached to jump anim event
@@ -158,7 +158,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        Debug.DrawLine(transform.position, new Vector3(0, 0, 0), Color.red);
         // toggle state
         if (Input.GetKeyDown("a") && _faceRightState)
         {

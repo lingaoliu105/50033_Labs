@@ -14,14 +14,16 @@ public class EnemyMovement : MonoBehaviour
 
     private Rigidbody2D enemyBody;
 
-    public Vector3 startPosition = new Vector3(0.0f, 0.0f, 0.0f);
+    private Vector3 startPosition;
 
     void Start()
     {
+        startPosition = transform.position;
         enemyBody = GetComponent<Rigidbody2D>();
         // get the starting position
         originalX = transform.position.x;
         ComputeVelocity();
+        
     }
     void ComputeVelocity()
     {
@@ -57,5 +59,10 @@ public class EnemyMovement : MonoBehaviour
         moveRight *= -1;
         ComputeVelocity();
         Movegoomba();
+    }
+
+    public void ResetPosition()
+    {
+        transform.position = startPosition;
     }
 }
