@@ -21,6 +21,10 @@ public class CameraController : MonoBehaviour
     private float lowY;
     private float viewportHalfWidth;
     private float viewportHalfHeight;
+    public float smoothTime = 0.05f;
+    private Vector3 velocity = new Vector3(0, 0, 0);
+    private Vector3 targetPosition;
+    public float playerHeight = 2.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,9 +44,13 @@ public class CameraController : MonoBehaviour
         upY = upperBound.transform.position.y;
         endX = endX1;
     }
-
-    // Update is called once per frame
     void Update()
+    {
+
+    }
+
+    // FixUpdate is called once per frame
+    void FixedUpdate()
     {
 
         float desiredX = player.position.x + offset_x;
@@ -73,9 +81,11 @@ public class CameraController : MonoBehaviour
             desiredY = upY;
         }
 
-        if (desiredY >= upCheck || desiredY <= downCheck)
+        if (desiredY >= upCheck - playerHeight || desiredY <= downCheck + playerHeight)
         {
-            this.transform.position = new Vector3(desiredX, desiredY, this.transform.position.z);
+            // transform.position = Vector3.SmoothDamp(transform.position, target.position, ref velocity, smoothTime);
+            Vector3 targetPosition = new Vector3(desiredX, desiredY, this.transform.position.z);
+            this.transform.position = Vector3.SmoothDamp(this.transform.position, targetPosition, ref velocity, smoothTime);
         }
         else
         {
