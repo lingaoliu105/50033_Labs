@@ -206,7 +206,7 @@ public class PlayerMovement : MonoBehaviour
         _faceRightState = true;
         _marioSprite.flipX = false;
         marioAnimator.SetTrigger("gameRestart");
-        gameCamera.position = new Vector3(0, 0, -10);
+        gameCamera.position = new Vector3(0, 1.25f, -10);
         alive = true;
     }
 }
