@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5479150664478222622}
   - component: {fileID: 5106349399262347700}
   - component: {fileID: 3524115383495450181}
+  - component: {fileID: 7528675350566214672}
   m_Layer: 3
   m_Name: Box
   m_TagString: Obstacle
@@ -202,6 +203,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7528675350566214672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095207958793828664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36ba8b8a5081dfd45ab3af1e1115a6a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6548345275017489693
 GameObject:
   m_ObjectHideFlags: 0
