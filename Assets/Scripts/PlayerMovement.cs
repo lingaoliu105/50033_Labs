@@ -33,6 +33,8 @@ public class PlayerMovement : MonoBehaviour
     public float marioWidth;
     int collisionLayerMask = (1 << 3) | (1 << 6) | (1 << 7);
 
+
+    public float multiImpulse = 1.2f;
     // state
     [System.NonSerialized]
     public bool alive = true;
@@ -77,12 +79,12 @@ public class PlayerMovement : MonoBehaviour
                 Vector2 otherPosition = col.gameObject.transform.position;
                 if (isUnderneath(otherPosition))
                 {
-                    marioAnimator.SetBool("onGround",true);
+                    marioAnimator.SetBool("onGround", true);
                     var enemy = col.gameObject;
                     Debug.Log("kill enemy here");
                     var jumpScript = GetComponent<JumpOverGoomba>();
                     jumpScript.UpdateScore(1);
-                    Jump();
+                    Jump(multiImpulse);
                 }
                 else
                 {
@@ -90,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
                     marioAnimator.Play("mario_die");
                     marioAudio.PlayOneShot(marioDeath);
                     alive = false;
-                    
+
                 }
             }
         }
@@ -100,12 +102,12 @@ public class PlayerMovement : MonoBehaviour
     {
         var position = transform.position;
         // Debug.DrawLine(position,point,Color.red);
-        float right = position.x + marioWidth/2;
-        float left = position.x - marioWidth/2;
-        float foot = position.y - marioHeight/2;
+        float right = position.x + marioWidth / 2;
+        float left = position.x - marioWidth / 2;
+        float foot = position.y - marioHeight / 2;
         return point.x > left && point.x < right && point.y < foot;
     }
-    
+
     //attached to jump anim event
     void PlayJumpSound()
     {
@@ -142,17 +144,17 @@ public class PlayerMovement : MonoBehaviour
 
             if (Input.GetKeyDown("space") && _onGroundState)
             {
-                Jump();
+                Jump(1.0f);
             }
         }
     }
 
-    void Jump()
+    void Jump(float multi)
     {
-        _marioBody.AddForce(Vector2.up * upSpeed, ForceMode2D.Impulse);
+        _marioBody.AddForce(Vector2.up * upSpeed * multi, ForceMode2D.Impulse);
         _onGroundState = false;
         marioAnimator.SetBool("onGround", _onGroundState);
-        
+
     }
 
 
@@ -206,7 +208,7 @@ public class PlayerMovement : MonoBehaviour
         _faceRightState = true;
         _marioSprite.flipX = false;
         marioAnimator.SetTrigger("gameRestart");
-        gameCamera.position = new Vector3(0, 0, -10);
+        gameCamera.position = new Vector3(0, 1.25f, -10);
         alive = true;
     }
 }

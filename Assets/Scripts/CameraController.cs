@@ -21,7 +21,10 @@ public class CameraController : MonoBehaviour
     private float lowY;
     private float viewportHalfWidth;
     private float viewportHalfHeight;
-    //public float smooth = 20;
+    public float smoothTime = 0.05f;
+    private Vector3 velocity = new Vector3(0, 0, 0);
+    private Vector3 targetPosition;
+    public float playerHeight = 2.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,13 +40,17 @@ public class CameraController : MonoBehaviour
         startX = startLimit.transform.position.x + viewportHalfWidth;
         endX1 = endLimit1.transform.position.x - viewportHalfWidth;
         endX2 = endLimit2.transform.position.x - viewportHalfWidth;
-        lowY = lowerBound.transform.position.y - viewportHalfHeight;
-        upY = upperBound.transform.position.y - viewportHalfHeight;
+        lowY = lowerBound.transform.position.y;
+        upY = upperBound.transform.position.y;
         endX = endX1;
     }
-
-    // Update is called once per frame
     void Update()
+    {
+
+    }
+
+    // FixUpdate is called once per frame
+    void FixedUpdate()
     {
 
         float desiredX = player.position.x + offset_x;
@@ -56,53 +63,51 @@ public class CameraController : MonoBehaviour
         float rightCheck = this.transform.position.x + viewportHalfWidth;
         float upCheck = this.transform.position.y + viewportHalfHeight;
         float downCheck = this.transform.position.y - viewportHalfHeight;
-        // if (leftCheck < startX)
-        // {
-        //     this.transform.position = new Vector3(startX + viewportHalfWidth, this.transform.position.y, this.transform.position.z);
-        // }
-        // if (rightCheck > endX)
-        // {
-        //     this.transform.position = new Vector3(endX - viewportHalfWidth, this.transform.position.y, this.transform.position.z);
-        // }
-        // if (upCheck > upY)
-        // {
-        //     this.transform.position = new Vector3(this.transform.position.x, upY - viewportHalfHeight, this.transform.position.z);
-        // }
-        // if (downCheck < lowY)
-        // {
-        //     this.transform.position = new Vector3(this.transform.position.x, lowY + viewportHalfHeight, this.transform.position.z);
-        // }
-        // check if desiredX is within startX and endX
 
-        if (desiredX > startX && desiredX < endX && desiredY > lowY && desiredY < upY)
+        if (desiredX < startX)
         {
-            if (desiredY >= upCheck || desiredY <= downCheck)
-            {
-                this.transform.position = new Vector3(desiredX, desiredY, this.transform.position.z);
-            }
-            else
-            {
-                this.transform.position = new Vector3(desiredX, this.transform.position.y, this.transform.position.z);
-            }
+            desiredX = startX;
+        }
+        else if (desiredX > endX)
+        {
+            desiredX = endX;
+        }
+        if (desiredY < lowY)
+        {
+            desiredY = lowY;
+        }
+        else if (desiredY > upY)
+        {
+            desiredY = upY;
+        }
+
+        if (desiredY >= upCheck - playerHeight || desiredY <= downCheck + playerHeight)
+        {
+            // transform.position = Vector3.SmoothDamp(transform.position, target.position, ref velocity, smoothTime);
+            Vector3 targetPosition = new Vector3(desiredX, desiredY, this.transform.position.z);
+            this.transform.position = Vector3.SmoothDamp(this.transform.position, targetPosition, ref velocity, smoothTime);
         }
         else
         {
-            if (desiredX <= startX)
-            {
-                this.transform.position = new Vector3(startX, this.transform.position.y, this.transform.position.z);
-            }
-            if (desiredX >= endX)
-            {
-                this.transform.position = new Vector3(endX, this.transform.position.y, this.transform.position.z);
-            }
-            if (desiredY >= upY)
-            {
-                this.transform.position = new Vector3(desiredX, upY, this.transform.position.z);
-            }
-            if (desiredY <= lowY)
-            {
-                this.transform.position = new Vector3(this.transform.position.x, lowY, this.transform.position.z);
-            }
+            this.transform.position = new Vector3(desiredX, this.transform.position.y, this.transform.position.z);
         }
+
+        if (this.transform.position.x < startX)
+        {
+            this.transform.position = new Vector3(startX, this.transform.position.y, this.transform.position.z);
+        }
+        else if (this.transform.position.x > endX)
+        {
+            this.transform.position = new Vector3(endX, this.transform.position.y, this.transform.position.z);
+        }
+        if (this.transform.position.y > upY)
+        {
+            this.transform.position = new Vector3(this.transform.position.x, upY, this.transform.position.z);
+        }
+        else if (this.transform.position.y < lowY)
+        {
+            this.transform.position = new Vector3(this.transform.position.x, lowY, this.transform.position.z);
+        }
+
     }
 }
