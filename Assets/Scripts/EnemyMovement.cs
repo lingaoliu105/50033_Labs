@@ -15,6 +15,8 @@ public class EnemyMovement : MonoBehaviour
     private Rigidbody2D enemyBody;
 
     private Vector3 startPosition;
+    int collisionLayerMask = (1 << 3) | (1 << 7);
+
 
     void Start()
     {
@@ -54,11 +56,23 @@ public class EnemyMovement : MonoBehaviour
         Debug.Log(other.gameObject.name);
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        moveRight *= -1;
-        ComputeVelocity();
-        Movegoomba();
+    private void OnCollisionEnter2D(Collision2D collision)
+    { 
+        if ((collisionLayerMask & (1 << collision.gameObject.layer))>0)
+        {
+            if (collision.transform.position.x < transform.position.x)
+            {
+                moveRight =1;
+                
+            }
+            else
+            {
+                moveRight = -1;
+            }
+            ComputeVelocity();
+            Movegoomba();
+            
+        }
     }
 
     public void ResetPosition()

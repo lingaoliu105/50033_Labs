@@ -31,6 +31,8 @@ public class PlayerMovement : MonoBehaviour
     public float marioHeight;
 
     public float marioWidth;
+    int collisionLayerMask = (1 << 3) | (1 << 6) | (1 << 7);
+
     // state
     [System.NonSerialized]
     public bool alive = true;
@@ -57,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.CompareTag("Ground") && !_onGroundState)
+        if ((collisionLayerMask & (1 << col.gameObject.layer))>0 && !_onGroundState)
         {
             _onGroundState = true;
             marioAnimator.SetBool("onGround", _onGroundState);
