@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class QuestionBoxControl : MonoBehaviour
 {
@@ -12,6 +13,11 @@ public class QuestionBoxControl : MonoBehaviour
     private Animator boxAnim;
 
     private bool animTriggerIsSet;
+
+    public bool willSpawnCoin;
+
+    public CoinControl coin;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,20 +38,33 @@ public class QuestionBoxControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (boxBody.transform.position.y > defaultPositionY && Math.Abs(boxBody.transform.position.y - defaultPositionY) > 0.01 && !animTriggerIsSet)
+        if (willSpawnCoin)
         {
-            boxAnim.SetTrigger("hitFromBottom");
-            animTriggerIsSet = true;
-        }
-        if (Math.Abs(boxBody.transform.position.y - defaultPositionY) < 0.01 && animTriggerIsSet)
-        {
-            animTriggerIsSet = false;
+            if (boxBody.transform.position.y > defaultPositionY && Math.Abs(boxBody.transform.position.y - defaultPositionY) > 0.01 && !animTriggerIsSet)
+            {
+                boxAnim.SetTrigger("hitFromBottom");
+                animTriggerIsSet = true;
+            }
+            if (Math.Abs(boxBody.transform.position.y - defaultPositionY) < 0.01 && animTriggerIsSet)
+            {
+                animTriggerIsSet = false;
+            }
+            
         }
     }
 
+    // Methods below are to be invoked as anim event callback
     void Disable()
-    // to be invoked as anim event callback
     {
         boxBody.bodyType = RigidbodyType2D.Static;
+    }
+
+    void SpawnCoin()
+    {
+        if (willSpawnCoin)
+        {
+            // coin.SetParent(gameObject);
+            coin.Spawn();
+        }
     }
 }

@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
     public float marioWidth;
     int collisionLayerMask = (1 << 3) | (1 << 6) | (1 << 7);
 
-    public Transform death_height;
+    public Transform deathHeight;
 
 
     public float multiImpulse = 1.2f;
@@ -86,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
                 // // Get the exact collision point
                 // Vector2 collisionPoint = contactPoint.point;
                 Vector2 otherPosition = col.gameObject.transform.position;
-                if (isUnderneath(otherPosition))
+                if (IsUnderneath(otherPosition))
                 {
                     marioAnimator.SetBool("onGround", true);
                     var enemy = col.gameObject;
@@ -107,7 +107,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    bool isUnderneath(Vector2 point)
+    bool IsUnderneath(Vector2 point)
     {
         var position = transform.position;
         // Debug.DrawLine(position,point,Color.red);
@@ -156,19 +156,19 @@ public class PlayerMovement : MonoBehaviour
                 Jump(1.0f);
             }
 
-            if (_marioBody.transform.position.y < death_height.transform.position.y)
-            {
-                // play death animation
-                marioAnimator.Play("mario_die");
-                marioAudio.PlayOneShot(marioDeath);
-                alive = false;
-            }
+            // if (_marioBody.transform.position.y < deathHeight.transform.position.y)
+            // {
+            //     // play death animation
+            //     marioAnimator.Play("mario_die");
+            //     marioAudio.PlayOneShot(marioDeath);
+            //     alive = false;
+            // }
         }
     }
 
     void Jump(float multi)
     {
-        _marioBody.AddForce(Vector2.up * upSpeed * multi, ForceMode2D.Impulse);
+        _marioBody.AddForce(Vector2.up * (upSpeed * multi), ForceMode2D.Impulse);
         _onGroundState = false;
         marioAnimator.SetBool("onGround", _onGroundState);
 
