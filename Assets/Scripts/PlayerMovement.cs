@@ -33,6 +33,8 @@ public class PlayerMovement : MonoBehaviour
     public float marioWidth;
     int collisionLayerMask = (1 << 3) | (1 << 6) | (1 << 7);
 
+    public Transform death_height;
+
 
     public float multiImpulse = 1.2f;
     // state
@@ -57,16 +59,23 @@ public class PlayerMovement : MonoBehaviour
         {
             marioAudio = GetComponent<AudioSource>();
         }
-        
+
     }
     void OnCollisionEnter2D(Collision2D col)
     {
-        if ((collisionLayerMask & (1 << col.gameObject.layer))>0 && !_onGroundState)
+        if ((collisionLayerMask & (1 << col.gameObject.layer)) > 0 && !_onGroundState)
         {
             _onGroundState = true;
             marioAnimator.SetBool("onGround", _onGroundState);
 
         }
+        if (col.gameObject.CompareTag("Ground") && !_onGroundState)
+        {
+            _onGroundState = true;
+            marioAnimator.SetBool("onGround", _onGroundState);
+
+        }
+
         if (col.gameObject.CompareTag("Enemy") && alive)
         {
             if (col.contacts.Length > 0)
@@ -145,6 +154,14 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKeyDown("space") && _onGroundState)
             {
                 Jump(1.0f);
+            }
+
+            if (_marioBody.transform.position.y < death_height.transform.position.y)
+            {
+                // play death animation
+                marioAnimator.Play("mario_die");
+                marioAudio.PlayOneShot(marioDeath);
+                alive = false;
             }
         }
     }
