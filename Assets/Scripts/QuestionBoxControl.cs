@@ -44,12 +44,21 @@ public class QuestionBoxControl : MonoBehaviour
             {
                 boxAnim.SetTrigger("hitFromBottom");
                 animTriggerIsSet = true;
+                SpawnCoin();
             }
             if (Math.Abs(boxBody.transform.position.y - defaultPositionY) < 0.01 && animTriggerIsSet)
             {
                 animTriggerIsSet = false;
             }
             
+        }
+    }
+    void SpawnCoin()
+    {
+        if (willSpawnCoin)
+        {
+            // coin.SetParent(gameObject);
+            coin.Spawn();
         }
     }
 
@@ -59,12 +68,4 @@ public class QuestionBoxControl : MonoBehaviour
         boxBody.bodyType = RigidbodyType2D.Static;
     }
 
-    void SpawnCoin()
-    {
-        if (willSpawnCoin)
-        {
-            // coin.SetParent(gameObject);
-            coin.Spawn();
-        }
-    }
 }
