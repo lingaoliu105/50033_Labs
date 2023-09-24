@@ -551,11 +551,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2442184262946139490, guid: 0bf8c3c83b0280a4c9b262414091b33b, type: 3}
       propertyPath: m_Size.y
-      value: 0.13194203
+      value: 0.29050946
       objectReference: {fileID: 0}
     - target: {fileID: 2442184262946139490, guid: 0bf8c3c83b0280a4c9b262414091b33b, type: 3}
       propertyPath: m_Offset.y
-      value: -0.43402898
+      value: -0.35474527
       objectReference: {fileID: 0}
     - target: {fileID: 6548345275017489693, guid: 0bf8c3c83b0280a4c9b262414091b33b, type: 3}
       propertyPath: m_Name
@@ -1080,7 +1080,7 @@ GameObject:
   m_Component:
   - component: {fileID: 468663013}
   - component: {fileID: 468663014}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2854,7 +2854,7 @@ GameObject:
   - component: {fileID: 1965291102}
   - component: {fileID: 1965291101}
   - component: {fileID: 1965291103}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: brick_box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2981,7 +2981,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.004732132, y: -0.43537307}
+  m_Offset: {x: -0.004732132, y: -0.3846315}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2992,7 +2992,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0473232, y: 0.12925386}
+  m_Size: {x: 1.0473232, y: 0.23073697}
   m_EdgeRadius: 0
 --- !u!114 &1965291101
 MonoBehaviour:
@@ -3047,7 +3047,7 @@ SpringJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_BreakAction: 3
-  m_AutoConfigureConnectedAnchor: 0
+  m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
@@ -3194,7 +3194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2065432505}
   - component: {fileID: 2065432506}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Brick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
