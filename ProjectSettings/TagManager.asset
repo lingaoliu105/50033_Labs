@@ -10,6 +10,8 @@ TagManager:
   - Obstacle
   - Coin
   - oneTimePlatform
+  - board
+  - win
   layers:
   - Default
   - TransparentFX
