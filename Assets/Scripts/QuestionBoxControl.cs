@@ -25,13 +25,13 @@ public class QuestionBoxControl : MonoBehaviour
         foreach (var body in bodies)
         {
             if (body.bodyType == RigidbodyType2D.Dynamic)
-                //find the dynamic one, not the static anchor on the root
+            //find the dynamic one, not the static anchor on the root
             {
                 boxBody = body;
             }
         }
         boxAnim = GetComponentInChildren<Animator>();
-        
+
         defaultPositionY = boxBody.transform.position.y;
     }
 
@@ -50,7 +50,7 @@ public class QuestionBoxControl : MonoBehaviour
             {
                 animTriggerIsSet = false;
             }
-            
+
         }
     }
     void SpawnCoin()

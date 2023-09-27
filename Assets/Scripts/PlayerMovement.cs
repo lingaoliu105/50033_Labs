@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     public Animator marioAnimator;
     public AudioSource marioAudio;
     public AudioClip marioDeath;
+    public AudioClip coinSound;
     public Transform gameCamera;
 
     public float deathImpulse = 30;
@@ -104,6 +105,24 @@ public class PlayerMovement : MonoBehaviour
 
                 }
             }
+        }
+
+        if (col.gameObject.CompareTag("Coin") && alive)
+        {
+            Destroy(col.gameObject);
+            Debug.Log("Get 1 coin here");
+            var jumpScript = GetComponent<JumpOverGoomba>();
+            marioAudio.PlayOneShot(coinSound);
+            jumpScript.UpdateScore(1);
+        }
+
+        if (col.gameObject.CompareTag("oneTimePlatform") && alive)
+        {
+
+            Destroy(col.gameObject);
+            Debug.Log("Get 1 coin here");
+            var jumpScript = GetComponent<JumpOverGoomba>();
+            jumpScript.UpdateScore(1);
         }
     }
 

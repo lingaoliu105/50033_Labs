@@ -9,6 +9,7 @@ TagManager:
   - Ground
   - Obstacle
   - Coin
+  - oneTimePlatform
   layers:
   - Default
   - TransparentFX
