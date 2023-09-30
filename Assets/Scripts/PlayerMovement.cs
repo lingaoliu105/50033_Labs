@@ -35,6 +35,8 @@ public class PlayerMovement : MonoBehaviour
 
     public Transform deathHeight;
 
+    private bool moving = false;
+    private bool jumpState = false;
 
     public float multiImpulse = 1.2f;
     // state
@@ -132,30 +134,10 @@ public class PlayerMovement : MonoBehaviour
     // FixedUpdate is called 50 times a second
     void FixedUpdate()
     {
-        if (alive)
+        if (alive && moving)
         {
-            float moveHorizontal = Input.GetAxisRaw("Horizontal");
-            if (Mathf.Abs(moveHorizontal) > 0)
-            {
-                Vector2 movement = new Vector2(moveHorizontal, 0);
-                if (_marioBody.velocity.magnitude < maxSpeed)
-                {
-
-                    _marioBody.AddForce(movement * speed);
-                }
-
-            }
-
-            if (Input.GetKeyUp("a") || Input.GetKeyUp("d"))
-            {
-                _marioBody.velocity.Set(0, _marioBody.velocity.y);
-            }
-
-            if (Input.GetKeyDown("space") && _onGroundState)
-            {
-                Jump(1.0f);
-            }
-
+           
+            Move(_faceRightState?1:-1);
             // if (_marioBody.transform.position.y < deathHeight.transform.position.y)
             // {
             //     // play death animation
@@ -166,52 +148,75 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void Jump(float multi)
+    void Move(int value)
     {
-        _marioBody.AddForce(Vector2.up * (upSpeed * multi), ForceMode2D.Impulse);
-        _onGroundState = false;
-        marioAnimator.SetBool("onGround", _onGroundState);
+        Vector2 movement = Vector2.right*value;
+        if (MathF.Abs(_marioBody.velocity.x) < maxSpeed)
+        {
+            _marioBody.AddForce(movement*speed);
+        }
+    }
 
+    public void MoveCheck(int value)
+    {
+        if (value == 0)
+        {
+            moving = false;
+        }
+        else
+        {
+            FlipMarioSprite(value);
+            moving = true;
+            Move(value);
+        }
+    }
+    public void Jump(float multi = 30)
+    {
+        if (alive && _onGroundState)
+        {
+            _marioBody.AddForce(Vector2.up * (upSpeed * multi), ForceMode2D.Impulse);
+            _onGroundState = false;
+            jumpState = true;
+            marioAnimator.SetBool("onGround", _onGroundState);
+        }
+
+    }
+
+    public void JumpHold()
+    {
+        if (alive && jumpState)
+        {
+            _marioBody.AddForce(Vector2.up*upSpeed*30,ForceMode2D.Force);
+            jumpState = false;
+        }
     }
 
 
     void Update()
     {
-        // toggle state
-        if (Input.GetKeyDown("a") && _faceRightState)
-        {
-            if (_marioBody.velocity.x > 0.1f)
-            {
-                marioAnimator.SetTrigger("onSkid");
-            }
-            _faceRightState = false;
-            _marioSprite.flipX = true;
-        }
-
-        if (Input.GetKeyDown("d") && !_faceRightState)
-        {
-            if (_marioBody.velocity.x < -0.1f)
-            {
-                marioAnimator.SetTrigger("onSkid");
-            }
-            _faceRightState = true;
-            _marioSprite.flipX = false;
-        }
         marioAnimator.SetFloat("xSpeed", MathF.Abs(_marioBody.velocity.x));
     }
 
-    // void OnTriggerEnter2D(Collider2D other)
-    // {
-    //     if (other.gameObject.CompareTag("Enemy") && alive)
-    //     {
-    //         Debug.Log("Collided with goomba!");
-    //         
-    //         // play death animation
-    //         marioAnimator.Play("mario-die");
-    //         marioAudio.PlayOneShot(marioDeath);
-    //         alive = false;
-    //     }
-    // }
+    void FlipMarioSprite(int value)
+    {
+        if (value == -1 && _faceRightState)
+        {
+            _faceRightState = false;
+            _marioSprite.flipX = true;
+            if (_marioBody.velocity.x > 0.05f)
+            {
+                marioAnimator.SetTrigger("onSkid");
+            }
+        }else if (value == 1 && !_faceRightState)
+        {
+            _faceRightState = true;
+            _marioSprite.flipX = false;
+            if (_marioBody.velocity.x < -0.05f)
+            {
+                marioAnimator.SetTrigger("onSkid");
+            }
+        }
+    }
 
     void GameOver()
     {
