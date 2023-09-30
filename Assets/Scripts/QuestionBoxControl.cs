@@ -18,14 +18,15 @@ public class QuestionBoxControl : MonoBehaviour
 
     public CoinControl coin;
 
+    public GameManager gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
         var bodies = GetComponentsInChildren<Rigidbody2D>();
         foreach (var body in bodies)
         {
-            if (body.bodyType == RigidbodyType2D.Dynamic)
-                //find the dynamic one, not the static anchor on the root
+            if (body.gameObject.name=="Box")
             {
                 boxBody = body;
             }
@@ -62,10 +63,10 @@ public class QuestionBoxControl : MonoBehaviour
         }
     }
 
-    // Methods below are to be invoked as anim event callback
-    void Disable()
+    public void ResetObject()
     {
-        boxBody.bodyType = RigidbodyType2D.Static;
+        boxAnim.SetTrigger("reset");
+        boxBody.bodyType = RigidbodyType2D.Dynamic;
+        coin.ResetObject();
     }
-
 }

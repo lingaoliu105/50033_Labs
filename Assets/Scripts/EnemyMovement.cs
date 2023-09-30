@@ -75,7 +75,7 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    public void ResetPosition()
+    public void ResetObject()
     {
         transform.position = startPosition;
     }

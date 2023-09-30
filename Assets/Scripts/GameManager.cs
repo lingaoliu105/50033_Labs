@@ -2,59 +2,50 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
-    public GameOverDisplay GameOverDisplay;
 
-    public PlayerMovement MarioMovement;
+    public UnityEvent gameStart;
+    public UnityEvent gameReset;
+    public UnityEvent<int> scoreChange;
+    public UnityEvent<int> gameOver;
 
-    public TextMeshProUGUI ScoreText;
-
-    public JumpOverGoomba JumpOverGoomba;
-
-    public GameObject enemies;
+    private int score = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("game manager start");
-        Debug.Log(GameOverDisplay);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        gameStart.Invoke();
+        Time.timeScale = 1.0f;
     }
 
     public void GameOver()
     {
         Time.timeScale = 0.0f;
-        GameOverDisplay.OnGameOver(JumpOverGoomba.Score);
+        gameOver.Invoke(score);
     }
 
     public void RestartButtonCallback(int input)
     {
-        // reset everything
         ResetGame();
-        // resume time
-        Time.timeScale = 1.0f;
     }
 
+    void SetScore(int score)
+    {
+        this.score = score;
+        scoreChange.Invoke(score);
+    }
+
+    public void IncreaseScore(int increment)
+    {
+        SetScore(score+increment);
+    }
     private void ResetGame()
     {
-        MarioMovement.Reset();
-        ScoreText.text = "Score: 0";
-        JumpOverGoomba.Score = 0;
-        // reset Goomba
-        foreach (Transform eachChild in enemies.transform)
-        {
-            if (eachChild.GetComponent<EnemyMovement>())
-            {
-                eachChild.GetComponent<EnemyMovement>().ResetPosition();
-            }
-        }
-        GameOverDisplay.OnGameRestart();
+        SetScore(0);        
+        gameReset.Invoke();
+        Time.timeScale = 1.0f;
     }
 }

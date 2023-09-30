@@ -82,19 +82,13 @@ public class PlayerMovement : MonoBehaviour
         {
             if (col.contacts.Length > 0)
             {
-                // Get the first contact point (you can iterate through all if needed)
-                // ContactPoint2D contactPoint = col.contacts[0];
-                //
-                // // Get the exact collision point
-                // Vector2 collisionPoint = contactPoint.point;
                 Vector2 otherPosition = col.gameObject.transform.position;
                 if (IsUnderneath(otherPosition))
                 {
                     marioAnimator.SetBool("onGround", true);
                     var enemy = col.gameObject;
                     Debug.Log("kill enemy here");
-                    var jumpScript = GetComponent<JumpOverGoomba>();
-                    jumpScript.UpdateScore(1);
+                    gameManager.IncreaseScore(1);
                     Jump(multiImpulse);
                 }
                 else
@@ -138,13 +132,6 @@ public class PlayerMovement : MonoBehaviour
         {
            
             Move(_faceRightState?1:-1);
-            // if (_marioBody.transform.position.y < deathHeight.transform.position.y)
-            // {
-            //     // play death animation
-            //     marioAnimator.Play("mario_die");
-            //     marioAudio.PlayOneShot(marioDeath);
-            //     alive = false;
-            // }
         }
     }
 
@@ -223,7 +210,7 @@ public class PlayerMovement : MonoBehaviour
         gameManager.GameOver();
     }
 
-    public void Reset()
+    public void ResetObject()
     {
         _marioBody.transform.position = defaultPosition;
         // reset sprite direction

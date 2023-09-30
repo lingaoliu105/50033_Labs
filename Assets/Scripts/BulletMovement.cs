@@ -34,8 +34,9 @@ public class BulletMovement : MonoBehaviour
         
         body.MovePosition(body.position+Vector2.left * (direction * horizontalSpeed));
     }
-
-    private void FixedUpdate()
+    
+    public void ResetObject()
     {
+        transform.position = _spawnPosition;
     }
 }

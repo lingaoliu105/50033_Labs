@@ -17,17 +17,6 @@ public class GameOverDisplay : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        // Debug.Log(GOScoreText);
-
-    }
-
-    private void FixedUpdate()
-    {
-    }
-
     public void OnGameOver(int score)
     {
         GOScoreText.text = "Score: " + score;

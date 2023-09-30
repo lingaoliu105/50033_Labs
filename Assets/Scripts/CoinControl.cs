@@ -10,10 +10,14 @@ public class CoinControl : MonoBehaviour
     public GameObject parentBox;
     public float spawnForce;
     private AudioSource coinAudio;
+    private Vector2 defaultPosition;
+
+    public GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        defaultPosition = transform.position;
         coinAudio = GetComponent<AudioSource>();
         
         coinBody = GetComponent<Rigidbody2D>();
@@ -25,6 +29,7 @@ public class CoinControl : MonoBehaviour
         if (other.gameObject == parentBox)
         {
             coinAudio.PlayOneShot(coinAudio.clip);
+            gameManager.IncreaseScore(1);
             Hide();
         }
     }
@@ -45,5 +50,14 @@ public class CoinControl : MonoBehaviour
         gameObject.SetActive(true);
 
         coinBody.AddForce(Vector2.up*spawnForce,ForceMode2D.Impulse);
+    }
+
+    public void ResetObject()
+    {
+        GetComponent<SpriteRenderer>().enabled = true;
+        GetComponent<Collider2D>().enabled = true;
+        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+        transform.position = defaultPosition;
+        gameObject.SetActive(false);
     }
 }
