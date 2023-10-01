@@ -6,11 +6,13 @@ public class CameraController : MonoBehaviour
 {
     public Transform player; // Mario's Transform
     public Transform startLimit; // GameObject that indicates start of map
+    public Transform startLimit2;
     public Transform endLimit1; // GameObject that indicates end of map
     public Transform endLimit2; // GameObject that indicates end of map
     private float offset_x; // initial x-offset between camera and Mario
     private float offset_y; // initial y-offset between camera and Mario
     private float startX; // smallest x-coordinate of the Camera
+    private float startX2;
     private float endX1; // largest x-coordinate of the camera
     private float endX2; // largest x-coordinate of the camera
     private float endX;
@@ -38,6 +40,7 @@ public class CameraController : MonoBehaviour
         viewportHalfHeight = Mathf.Abs(upLeft.y - bottomLeft.y) / 2;
         //startX = this.transform.position.x;
         startX = startLimit.transform.position.x + viewportHalfWidth;
+        startX2 = startLimit2.transform.position.x + viewportHalfWidth;
         endX1 = endLimit1.transform.position.x - viewportHalfWidth;
         endX2 = endLimit2.transform.position.x - viewportHalfWidth;
         lowY = lowerBound.transform.position.y;
@@ -55,8 +58,9 @@ public class CameraController : MonoBehaviour
 
         float desiredX = player.position.x + offset_x;
         float desiredY = player.position.y + offset_y;
-        if (desiredY >= upY)
+        if (desiredY >= 31.0)
         {
+            startX = startX2;
             endX = endX2;
         }
         float leftCheck = this.transform.position.x - viewportHalfWidth;
@@ -81,7 +85,7 @@ public class CameraController : MonoBehaviour
             desiredY = upY;
         }
 
-        if (desiredY >= upCheck - playerHeight || desiredY <= downCheck + playerHeight)
+        if (desiredY >= upCheck - playerHeight || desiredY <= downCheck + playerHeight + 1)
         {
             // transform.position = Vector3.SmoothDamp(transform.position, target.position, ref velocity, smoothTime);
             Vector3 targetPosition = new Vector3(desiredX, desiredY, this.transform.position.z);
