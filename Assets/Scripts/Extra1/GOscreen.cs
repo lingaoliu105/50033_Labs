@@ -1,10 +1,11 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
-using UnityEngine;
-public class gamOverDisplay : MonoBehaviour
+
+
+public class GOscreen : MonoBehaviour
 {
     public TextMeshProUGUI GOScoreText;
     // Start is called before the first frame update
@@ -18,9 +19,10 @@ public class gamOverDisplay : MonoBehaviour
     {
 
     }
-    public void OnGameOver(int score)
+
+    public void OnGameOver(float score)
     {
-        GOScoreText.text = "Score: " + score;
+        GOScoreText.text = "Score: " + Mathf.Round(score);
         gameObject.SetActive(true);
     }
 

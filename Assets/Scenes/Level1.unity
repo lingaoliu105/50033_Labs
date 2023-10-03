@@ -1718,6 +1718,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7491623539338560869, guid: 06870f89bdad0394db46bdbf73a1c08a, type: 3}
+      propertyPath: m_Pitch
+      value: 1.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 7491623539338560869, guid: 06870f89bdad0394db46bdbf73a1c08a, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 4603289036658321682, guid: f9be79d6b96a31c40ba3af8e84fe1c88, type: 2}
     - target: {fileID: 8569859311511062666, guid: 06870f89bdad0394db46bdbf73a1c08a, type: 3}
       propertyPath: m_Name
       value: Goomba
@@ -2390,7 +2398,7 @@ Transform:
   m_GameObject: {fileID: 1311661497}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -16.49, y: 18.4, z: 0}
+  m_LocalPosition: {x: -16.49, y: 25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3202,6 +3210,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7491623539338560869, guid: 06870f89bdad0394db46bdbf73a1c08a, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 4603289036658321682, guid: f9be79d6b96a31c40ba3af8e84fe1c88, type: 2}
     - target: {fileID: 8569859311511062666, guid: 06870f89bdad0394db46bdbf73a1c08a, type: 3}
       propertyPath: m_Name
       value: Goomba
@@ -3500,7 +3512,7 @@ PrefabInstance:
     - target: {fileID: 5377836329240303713, guid: 0bf8c3c83b0280a4c9b262414091b33b, type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
-      objectReference: {fileID: 135893526984039419, guid: f9be79d6b96a31c40ba3af8e84fe1c88, type: 2}
+      objectReference: {fileID: 8437694626785275066, guid: f9be79d6b96a31c40ba3af8e84fe1c88, type: 2}
     - target: {fileID: 5892142922274573158, guid: 0bf8c3c83b0280a4c9b262414091b33b, type: 3}
       propertyPath: gameManager
       value: 
@@ -6583,7 +6595,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -6681,6 +6693,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a396fb5db437f453d89c54963e7b9719, type: 3}
   - {fileID: 8300000, guid: d8538255f671b4550bce48803d6a0053, type: 3}
   - {fileID: 8300000, guid: 062bfccde474844c4a0e5100933f09e5, type: 3}
+  player: {fileID: 8835249800246438613}
 --- !u!1 &6800916975691822812
 GameObject:
   m_ObjectHideFlags: 0
