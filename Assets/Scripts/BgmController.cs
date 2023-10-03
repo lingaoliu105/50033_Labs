@@ -7,24 +7,36 @@ public class BgmController : MonoBehaviour
     public AudioClip[] audios;
     public Transform player;
     private bool changed = false;
+
+    private AudioSource _audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
-        this.GetComponent<AudioSource>().clip = audios[0];
-        this.GetComponent<AudioSource>().Play();
+        _audioSource = GetComponent<AudioSource>();
+        _audioSource.clip = audios[0];
+        _audioSource.Play();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (this.GetComponent<AudioSource>().isPlaying)
+        if (_audioSource.isPlaying)
         {
             if (player.transform.position.x > 15 && changed == false)
             {
-                this.GetComponent<AudioSource>().clip = audios[1];
-                this.GetComponent<AudioSource>().Play();
+                _audioSource.clip = audios[1];
+                _audioSource.Play();
                 changed = true;
             }
+        }
+    }
+
+    void OnGameOver()
+    {
+        if (_audioSource.isPlaying)
+        {
+            
         }
     }
 }

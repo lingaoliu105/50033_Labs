@@ -82,7 +82,7 @@ public class EnemyMovement : MonoBehaviour
         enemyBody.bodyType = RigidbodyType2D.Dynamic;
         enemyBody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
         goombaAudio.PlayOneShot(goombaAudio.clip);
-        gameObject.layer = 8;
+        gameObject.layer = 9;
     }
 
     public void Disable()
