@@ -4,8 +4,9 @@ using UnityEngine;
 using TMPro;
 public class gameManager : MonoBehaviour
 {
-    public GOscreen GOscreen;
+    public ScreenController screenController;
     public PlayerFollower cam;
+    public autoGenerator aut;
     public TextMeshProUGUI ScoreText;
     public float Score;
     public Player Player;
@@ -26,7 +27,12 @@ public class gameManager : MonoBehaviour
     public void GameOver()
     {
         Time.timeScale = 0.0f;
-        GOscreen.OnGameOver(MaxScore);
+        screenController.OnGameOver(MaxScore);
+    }
+    public void Win()
+    {
+        Time.timeScale = 0.0f;
+        screenController.OnWin(MaxScore);
     }
     public void RestartButtonCallback(int input)
     {
@@ -49,6 +55,7 @@ public class gameManager : MonoBehaviour
         MaxScore = 0;
         ScoreText.text = "Score: 0";
         cam.Reset();
-        GOscreen.OnGameRestart();
+        aut.Restart();
+        screenController.OnGameRestart();
     }
 }

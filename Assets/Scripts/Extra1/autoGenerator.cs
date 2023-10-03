@@ -17,7 +17,14 @@ public class autoGenerator : MonoBehaviour
     public float maxY = 1.6f;
     private float lastX;
 
+    public GameObject parentObject;
+
     private void Start()
+    {
+        build();
+    }
+
+    private void build()
     {
         Vector3 spawnPos = new Vector3();
         for (int i = 0; i < nPlatforms; i++)
@@ -34,30 +41,47 @@ public class autoGenerator : MonoBehaviour
 
             if (i == nPlatforms - 1)
             {
-                Instantiate(winPoint, spawnPos, Quaternion.identity);
+                GameObject child = Instantiate(winPoint, spawnPos, Quaternion.identity);
+                child.transform.SetParent(parentObject.transform);
             }
             else
             {
-                Instantiate(platform, spawnPos, Quaternion.identity);
+                GameObject child = Instantiate(platform, spawnPos, Quaternion.identity);
+                child.transform.SetParent(parentObject.transform);
                 float temp = Random.Range(-2 * XWidth, 2 * XWidth);
                 if (spawnPos.y > 15f)
                 {
                     int number = Random.Range(0, 8);
                     if (number == 1)
                     {
-                        Instantiate(cloud1, new Vector3(-spawnPos.x + temp, spawnPos.y, spawnPos.z), Quaternion.identity);
+                        GameObject child1 = Instantiate(cloud1, new Vector3(-spawnPos.x + temp, spawnPos.y, spawnPos.z), Quaternion.identity);
+                        child1.transform.SetParent(parentObject.transform);
                     }
                     else if (number == 2)
                     {
-                        Instantiate(cloud2, new Vector3(-spawnPos.x + temp, spawnPos.y, spawnPos.z), Quaternion.identity);
+                        GameObject child2 = Instantiate(cloud2, new Vector3(-spawnPos.x + temp, spawnPos.y, spawnPos.z), Quaternion.identity);
+                        child2.transform.SetParent(parentObject.transform);
                     }
                     else if (number == 3)
                     {
-                        Instantiate(cloud2, new Vector3(-spawnPos.x + temp, spawnPos.y, spawnPos.z), Quaternion.identity);
+                        GameObject child3 = Instantiate(cloud2, new Vector3(-spawnPos.x + temp, spawnPos.y, spawnPos.z), Quaternion.identity);
+                        child3.transform.SetParent(parentObject.transform);
                     }
                 }
             }
         }
     }
 
+    public void clean()
+    {
+        foreach (Transform child in parentObject.transform)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+    public void Restart()
+    {
+        clean();
+        build();
+    }
 }

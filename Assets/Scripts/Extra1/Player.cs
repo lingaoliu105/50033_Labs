@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
 
     public float edge = 6f;
     public AudioSource audio;
+    public AudioSource jumpAudio;
 
     private void Update()
     {
@@ -38,15 +39,16 @@ public class Player : MonoBehaviour
         {
             if (col.CompareTag("board"))
             {
+                jumpAudio.PlayOneShot(jumpAudio.clip);
                 player.velocity = new Vector2(0f, 10f);
             }
         }
 
         if (col.CompareTag("win"))
         {
-            Destroy(col.gameObject);
+            col.gameObject.SetActive(false);
             audio.PlayOneShot(audio.clip);
-            gm.GameOver();
+            gm.Win();
         }
     }
 

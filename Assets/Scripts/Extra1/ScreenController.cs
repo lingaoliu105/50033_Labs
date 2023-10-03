@@ -5,9 +5,10 @@ using TMPro;
 using Unity.VisualScripting;
 
 
-public class GOscreen : MonoBehaviour
+public class ScreenController : MonoBehaviour
 {
-    public TextMeshProUGUI GOScoreText;
+    public TextMeshProUGUI ScoreText;
+    public TextMeshProUGUI Text;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +23,15 @@ public class GOscreen : MonoBehaviour
 
     public void OnGameOver(float score)
     {
-        GOScoreText.text = "Score: " + Mathf.Round(score);
+
+        Text.text = "Game Over";
+        ScoreText.text = "Score: " + Mathf.Round(score);
+        gameObject.SetActive(true);
+    }
+    public void OnWin(float score)
+    {
+        Text.text = "You Win!";
+        ScoreText.text = "Score: " + Mathf.Round(score);
         gameObject.SetActive(true);
     }
 
