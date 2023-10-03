@@ -13,6 +13,8 @@ public class EnemyMovement : MonoBehaviour
     private Vector2 velocity;
 
     private Rigidbody2D enemyBody;
+    private Animator goombaAnim;
+    private AudioSource goombaAudio;
 
     private Vector3 startPosition;
     int collisionLayerMask = (1 << 3) | (1 << 7);
@@ -20,6 +22,9 @@ public class EnemyMovement : MonoBehaviour
 
     void Start()
     {
+        goombaAnim = GetComponent<Animator>();
+        goombaAudio = GetComponent<AudioSource>();
+        
         startPosition = transform.position;
         enemyBody = GetComponent<Rigidbody2D>();
         // get the starting position
@@ -50,11 +55,6 @@ public class EnemyMovement : MonoBehaviour
             Movegoomba();
         }
     }
-    
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        Debug.Log(other.gameObject.name);
-    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     { 
@@ -73,10 +73,28 @@ public class EnemyMovement : MonoBehaviour
             Movegoomba();
             
         }
+        
+    }
+
+    public void Stomped()
+    {
+        goombaAnim.SetTrigger("Stomped");
+        enemyBody.bodyType = RigidbodyType2D.Dynamic;
+        enemyBody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+        goombaAudio.PlayOneShot(goombaAudio.clip);
+        gameObject.layer = 8;
+    }
+
+    public void Disable()
+    {
+        gameObject.SetActive(false);
     }
 
     public void ResetObject()
     {
         transform.position = startPosition;
+        enemyBody.bodyType = RigidbodyType2D.Kinematic;
+        gameObject.SetActive(true);
+        gameObject.layer = 6;
     }
 }
