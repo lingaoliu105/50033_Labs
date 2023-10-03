@@ -183,6 +183,7 @@ MonoBehaviour:
   marioAnimator: {fileID: 8059978848613566690}
   marioAudio: {fileID: 2941827131710938641}
   marioDeath: {fileID: 8300000, guid: c7a3ffadf9f8675439297a66d0fc36e0, type: 3}
+  coinSound: {fileID: 0}
   gameCamera: {fileID: 0}
   deathImpulse: 10
   marioHeight: 1
@@ -219,7 +220,7 @@ AudioSource:
   m_GameObject: {fileID: 7036721868022725217}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -4767725510076888901, guid: f9be79d6b96a31c40ba3af8e84fe1c88, type: 2}
   m_audioClip: {fileID: 8300000, guid: bc5ca5e0703c54692a186434e1149ccd, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1

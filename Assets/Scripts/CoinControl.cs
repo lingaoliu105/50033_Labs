@@ -9,7 +9,7 @@ public class CoinControl : MonoBehaviour
 
     public GameObject parentBox;
     public float spawnForce;
-    private AudioSource coinAudio;
+    public AudioSource coinAudio;
     private Vector2 defaultPosition;
 
     public GameManager gameManager;
@@ -19,7 +19,7 @@ public class CoinControl : MonoBehaviour
     {
         defaultPosition = transform.position;
         coinAudio = GetComponent<AudioSource>();
-        
+
         coinBody = GetComponent<Rigidbody2D>();
         gameObject.SetActive(false);
     }
@@ -43,13 +43,13 @@ public class CoinControl : MonoBehaviour
         GetComponent<Collider2D>().enabled = false;
         GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
     }
-    
+
 
     public void Spawn()
     {
         gameObject.SetActive(true);
 
-        coinBody.AddForce(Vector2.up*spawnForce,ForceMode2D.Impulse);
+        coinBody.AddForce(Vector2.up * spawnForce, ForceMode2D.Impulse);
     }
 
     public void ResetObject()

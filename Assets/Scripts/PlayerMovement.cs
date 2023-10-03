@@ -23,8 +23,8 @@ public class PlayerMovement : MonoBehaviour
 
     public Animator marioAnimator;
     public AudioSource marioAudio;
-    public AudioClip marioDeath;
-    public AudioClip coinSound;
+    public AudioSource marioDeath;
+    public AudioSource coinSound;
     public Transform gameCamera;
 
     public float deathImpulse = 30;
@@ -96,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     // play death animation
                     marioAnimator.Play("mario_die");
-                    marioAudio.PlayOneShot(marioDeath);
+                    marioAudio.PlayOneShot(marioDeath.clip);
                     alive = false;
 
                 }
@@ -107,9 +107,8 @@ public class PlayerMovement : MonoBehaviour
         {
             Destroy(col.gameObject);
             Debug.Log("Get 1 coin here");
-            var jumpScript = GetComponent<JumpOverGoomba>();
-            marioAudio.PlayOneShot(coinSound);
-            jumpScript.UpdateScore(1);
+            marioAudio.PlayOneShot(coinSound.clip);
+            gameManager.IncreaseScore(1);
         }
 
         if (col.gameObject.CompareTag("oneTimePlatform") && alive)
@@ -117,8 +116,7 @@ public class PlayerMovement : MonoBehaviour
 
             Destroy(col.gameObject);
             Debug.Log("Get 1 coin here");
-            var jumpScript = GetComponent<JumpOverGoomba>();
-            jumpScript.UpdateScore(1);
+            gameManager.IncreaseScore(1);
         }
     }
 
@@ -149,17 +147,17 @@ public class PlayerMovement : MonoBehaviour
     {
         if (alive && moving)
         {
-           
-            Move(_faceRightState?1:-1);
+
+            Move(_faceRightState ? 1 : -1);
         }
     }
 
     void Move(int value)
     {
-        Vector2 movement = Vector2.right*value;
+        Vector2 movement = Vector2.right * value;
         if (MathF.Abs(_marioBody.velocity.x) < maxSpeed)
         {
-            _marioBody.AddForce(movement*speed);
+            _marioBody.AddForce(movement * speed);
         }
     }
 
@@ -192,7 +190,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (alive && jumpState)
         {
-            _marioBody.AddForce(Vector2.up*upSpeed*30,ForceMode2D.Force);
+            _marioBody.AddForce(Vector2.up * upSpeed * 30, ForceMode2D.Force);
             jumpState = false;
         }
     }
@@ -213,7 +211,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 marioAnimator.SetTrigger("onSkid");
             }
-        }else if (value == 1 && !_faceRightState)
+        }
+        else if (value == 1 && !_faceRightState)
         {
             _faceRightState = true;
             _marioSprite.flipX = false;

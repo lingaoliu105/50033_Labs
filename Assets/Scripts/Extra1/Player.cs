@@ -11,6 +11,9 @@ public class Player : MonoBehaviour
 
     public Vector3 defaultPosition; //记录原点
 
+    public float edge = 6f;
+    public AudioSource audio;
+
     private void Update()
     {
         PlayerController();
@@ -19,13 +22,13 @@ public class Player : MonoBehaviour
 
     private void checkEdge()
     {
-        if (transform.position.x < -6f)
+        if (transform.position.x < -edge)
         {
-            transform.position = new Vector2(6f, transform.position.y);
+            transform.position = new Vector2(edge, transform.position.y);
         }
-        if (transform.position.x > 6f)
+        if (transform.position.x > edge)
         {
-            transform.position = new Vector2(-6f, transform.position.y);
+            transform.position = new Vector2(-edge, transform.position.y);
         }
     }
 
@@ -41,6 +44,8 @@ public class Player : MonoBehaviour
 
         if (col.CompareTag("win"))
         {
+            Destroy(col.gameObject);
+            audio.PlayOneShot(audio.clip);
             gm.GameOver();
         }
     }
