@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerFollow : MonoBehaviour
+public class PlayerFollower : MonoBehaviour
 {
     public Transform Player;
     private Vector3 Velocity;
@@ -14,6 +14,7 @@ public class PlayerFollow : MonoBehaviour
     private void Start()
     {
         Screen.orientation = ScreenOrientation.Portrait;
+        defaultPosition = transform.position;
     }
     private void FixedUpdate()
     {

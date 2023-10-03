@@ -5,6 +5,7 @@ using TMPro;
 public class gameManager : MonoBehaviour
 {
     public GOscreen GOscreen;
+    public PlayerFollower cam;
     public TextMeshProUGUI ScoreText;
     public float Score;
     public Player Player;
@@ -44,8 +45,10 @@ public class gameManager : MonoBehaviour
     private void ResetGame()
     {
         Player.Reset();
-        ScoreText.text = "Score: 0";
         Score = 0;
+        MaxScore = 0;
+        ScoreText.text = "Score: 0";
+        cam.Reset();
         GOscreen.OnGameRestart();
     }
 }
