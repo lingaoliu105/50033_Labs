@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
     private bool moving = false;
     private bool jumpState = false;
 
-    public float multiImpulse = 1.2f;
+    public float multiImpulse = 12.0f;
     // state
     [System.NonSerialized]
     public bool alive = true;
@@ -88,7 +88,10 @@ public class PlayerMovement : MonoBehaviour
                 {
                     marioAnimator.SetBool("onGround", true);
                     var enemy = col.gameObject;
-                    Debug.Log("kill enemy here");
+                    if (enemy.GetComponent<EnemyMovement>())
+                    {
+                        enemy.GetComponent<EnemyMovement>().Stomped();
+                    }
                     gameManager.IncreaseScore(1);
                     Jump(multiImpulse);
                 }
