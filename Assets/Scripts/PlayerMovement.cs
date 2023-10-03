@@ -96,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     // play death animation
                     marioAnimator.Play("mario_die");
-                    marioAudio.PlayOneShot(marioDeath.clip);
+                    marioDeath.PlayOneShot(marioDeath.clip);
                     alive = false;
 
                 }
@@ -107,7 +107,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Destroy(col.gameObject);
             Debug.Log("Get 1 coin here");
-            marioAudio.PlayOneShot(coinSound.clip);
+            coinSound.PlayOneShot(coinSound.clip);
             gameManager.IncreaseScore(1);
         }
 

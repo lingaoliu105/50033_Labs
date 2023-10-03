@@ -695,6 +695,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 135893526984039419, guid: f9be79d6b96a31c40ba3af8e84fe1c88, type: 2}
     - target: {fileID: 5892142922274573158, guid: 0bf8c3c83b0280a4c9b262414091b33b, type: 3}
+      propertyPath: coinAudio
+      value: 
+      objectReference: {fileID: 1117951853}
+    - target: {fileID: 5892142922274573158, guid: 0bf8c3c83b0280a4c9b262414091b33b, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1208246481}
@@ -2257,6 +2261,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!82 &1117951853 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5377836329240303713, guid: 0bf8c3c83b0280a4c9b262414091b33b, type: 3}
+  m_PrefabInstance: {fileID: 109638751}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1208246481 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6598352979958608730, guid: 15fdaa054cff37f439472ef23730ffe5, type: 3}
@@ -6552,6 +6561,7 @@ GameObject:
   m_Component:
   - component: {fileID: 885997547464510477}
   - component: {fileID: 6800289345655411166}
+  - component: {fileID: 6800289345655411167}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -6570,7 +6580,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 6413225204353253890, guid: f9be79d6b96a31c40ba3af8e84fe1c88, type: 2}
   m_audioClip: {fileID: 8300000, guid: a396fb5db437f453d89c54963e7b9719, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -6655,6 +6665,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6800289345655411167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6800289345655411165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d4b26005b9c484409ad5c28fa0231a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audios:
+  - {fileID: 8300000, guid: a396fb5db437f453d89c54963e7b9719, type: 3}
+  - {fileID: 8300000, guid: d8538255f671b4550bce48803d6a0053, type: 3}
+  - {fileID: 8300000, guid: 062bfccde474844c4a0e5100933f09e5, type: 3}
 --- !u!1 &6800916975691822812
 GameObject:
   m_ObjectHideFlags: 0
