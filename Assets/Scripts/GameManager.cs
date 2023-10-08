@@ -1,51 +1,82 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
 
     public UnityEvent gameStart;
     public UnityEvent gameReset;
     public UnityEvent<int> scoreChange;
     public UnityEvent<int> gameOver;
+    public UnityEvent gamePause;
+    public UnityEvent gameResume;
 
-    private int score = 0;
+    public GameStatistics statistics;
+    
 
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 0.0f;
+        SceneManager.activeSceneChanged += SceneSetup;
+    }
+
+    private void SceneSetup(Scene arg0, Scene arg1)
+    {
         gameStart.Invoke();
-        Time.timeScale = 1.0f;
+        SetScore(statistics.score);
     }
 
     public void GameOver()
     {
         Time.timeScale = 0.0f;
-        gameOver.Invoke(score);
+        gameOver.Invoke(statistics.score);
     }
 
-    public void RestartButtonCallback(int input)
+    public void RestartButtonCallback()
     {
         ResetGame();
     }
 
     void SetScore(int score)
     {
-        this.score = score;
+        statistics.score = score;
+        if (statistics.score > statistics.highestScore)
+        {
+            statistics.highestScore = statistics.score;
+        }
         scoreChange.Invoke(score);
     }
 
     public void IncreaseScore(int increment)
     {
-        SetScore(score+increment);
+        SetScore(statistics.score+increment);
     }
     private void ResetGame()
     {
         SetScore(0);        
         gameReset.Invoke();
         Time.timeScale = 1.0f;
+    }
+
+    public void StartGame()
+    {
+        gameStart.Invoke();
+        Time.timeScale = 1.0f;
+    }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0.0f;    
+        gamePause.Invoke();
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1.0f;
+        gameResume.Invoke();
     }
 }

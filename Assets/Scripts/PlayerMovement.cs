@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 public class PlayerMovement : MonoBehaviour
@@ -16,9 +17,6 @@ public class PlayerMovement : MonoBehaviour
 
     private SpriteRenderer _marioSprite;
     private bool _faceRightState = true;
-
-    public GameManager gameManager;
-
     public Vector3 defaultPosition;
 
     public Animator marioAnimator;
@@ -44,7 +42,14 @@ public class PlayerMovement : MonoBehaviour
     [System.NonSerialized]
     public bool alive = true;
 
-    // Start is called before the first frame update
+    public GameConstants GameConstants;
+
+    void Awake()
+    {
+        GameManager.instance.gameReset.AddListener(ResetObject);
+    }
+    
+
     void Start()
     {
         // Set to be 30 FPS
@@ -62,8 +67,16 @@ public class PlayerMovement : MonoBehaviour
         {
             marioAudio = GetComponent<AudioSource>();
         }
-
     }
+
+    public void SetStartingPosition(Scene current, Scene next)
+    {
+        if (next.name == GameConstants.scene2Name)
+        {
+            transform.position = GameConstants.scene2DefaultPosition;
+        }
+    }
+
     void OnCollisionEnter2D(Collision2D col)
     {
         if ((collisionLayerMask & (1 << col.gameObject.layer)) > 0 && !_onGroundState)
@@ -92,7 +105,7 @@ public class PlayerMovement : MonoBehaviour
                     {
                         enemy.GetComponent<EnemyMovement>().Stomped();
                     }
-                    gameManager.IncreaseScore(1);
+                    GameManager.instance.IncreaseScore(1);
                     Jump(multiImpulse);
                 }
                 else
@@ -111,7 +124,7 @@ public class PlayerMovement : MonoBehaviour
             Destroy(col.gameObject);
             Debug.Log("Get 1 coin here");
             coinSound.PlayOneShot(coinSound.clip);
-            gameManager.IncreaseScore(1);
+            GameManager.instance.IncreaseScore(1);
         }
 
         if (col.gameObject.CompareTag("oneTimePlatform") && alive)
@@ -119,7 +132,7 @@ public class PlayerMovement : MonoBehaviour
 
             Destroy(col.gameObject);
             Debug.Log("Get 1 coin here");
-            gameManager.IncreaseScore(1);
+            GameManager.instance.IncreaseScore(1);
         }
     }
 
@@ -228,7 +241,7 @@ public class PlayerMovement : MonoBehaviour
 
     void GameOver()
     {
-        gameManager.GameOver();
+        GameManager.instance.GameOver();
     }
 
     public void ResetObject()
@@ -238,7 +251,6 @@ public class PlayerMovement : MonoBehaviour
         _faceRightState = true;
         _marioSprite.flipX = false;
         marioAnimator.SetTrigger("gameRestart");
-        gameCamera.position = new Vector3(0, 1.25f, -10);
         alive = true;
     }
 }

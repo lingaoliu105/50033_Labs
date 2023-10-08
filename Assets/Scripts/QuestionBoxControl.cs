@@ -18,7 +18,10 @@ public class QuestionBoxControl : MonoBehaviour
 
     public CoinControl coin;
 
-    public GameManager gameManager;
+    private void Awake()
+    {
+        GameManager.instance.gameReset.AddListener(ResetObject);
+    }
 
     // Start is called before the first frame update
     void Start()
