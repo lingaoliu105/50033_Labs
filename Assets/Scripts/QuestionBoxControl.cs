@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class QuestionBoxControl : MonoBehaviour
+public class QuestionBoxControl : MonoBehaviour,IPowerupController
 {
     private Rigidbody2D boxBody;
 
@@ -14,9 +14,9 @@ public class QuestionBoxControl : MonoBehaviour
 
     private bool animTriggerIsSet;
 
-    public bool willSpawnCoin;
+    public bool willSpawn;
 
-    public CoinControl coin;
+    private BasePowerup powerUp;
 
     private void Awake()
     {
@@ -26,6 +26,8 @@ public class QuestionBoxControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        powerUp = GetComponentInChildren<BasePowerup>();
+        Debug.Log(powerUp);
         var bodies = GetComponentsInChildren<Rigidbody2D>();
         foreach (var body in bodies)
         {
@@ -42,13 +44,13 @@ public class QuestionBoxControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (willSpawnCoin)
+        if (willSpawn)
         {
             if (boxBody.transform.position.y > defaultPositionY && Math.Abs(boxBody.transform.position.y - defaultPositionY) > 0.01 && !animTriggerIsSet)
             {
                 boxAnim.SetTrigger("hitFromBottom");
                 animTriggerIsSet = true;
-                SpawnCoin();
+                Spawn();
             }
             if (Math.Abs(boxBody.transform.position.y - defaultPositionY) < 0.01 && animTriggerIsSet)
             {
@@ -57,19 +59,25 @@ public class QuestionBoxControl : MonoBehaviour
             
         }
     }
-    void SpawnCoin()
+    void Spawn()
     {
-        if (willSpawnCoin)
+        if (willSpawn)
         {
             // coin.SetParent(gameObject);
-            coin.Spawn();
+            powerUp.Spawn();
         }
     }
 
     public void ResetObject()
     {
-        boxAnim.SetTrigger("reset");
         boxBody.bodyType = RigidbodyType2D.Dynamic;
-        coin.ResetObject();
+        Debug.Log(boxBody.bodyType);
+        boxAnim.SetTrigger("reset");
+        powerUp.ResetObject();
+    }
+
+    public void Disable()
+    {
+        throw new NotImplementedException();
     }
 }

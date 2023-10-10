@@ -56,6 +56,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Brick
       objectReference: {fileID: 0}
+    - target: {fileID: 7179737496884358747, guid: 0bf8c3c83b0280a4c9b262414091b33b, type: 3}
+      propertyPath: spawnForce
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9033042955781915003, guid: 0bf8c3c83b0280a4c9b262414091b33b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1540423721, guid: 82bc45c4496284f4c823d1b837f65ec4, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

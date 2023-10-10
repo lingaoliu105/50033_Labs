@@ -5,7 +5,7 @@ using UnityEngine;
 public interface IPowerUp
 {
     void DestroyPowerup();
-    void SpawnPowerup();
+    void Spawn();
     void ApplyPowerup(MonoBehaviour i);
 
     PowerupType powerupType

@@ -290,9 +290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36ba8b8a5081dfd45ab3af1e1115a6a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  willSpawnCoin: 1
-  coin: {fileID: 5892142922274573158}
-  gameManager: {fileID: 0}
+  willSpawn: 1
 --- !u!1 &8975691228759152873
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,8 +377,8 @@ GameObject:
   - component: {fileID: 6319924915327377088}
   - component: {fileID: 5375037422050467091}
   - component: {fileID: 1173848087607887602}
-  - component: {fileID: 5892142922274573158}
   - component: {fileID: 5377836329240303713}
+  - component: {fileID: 7179737496884358747}
   m_Layer: 8
   m_Name: Coin
   m_TagString: Coin
@@ -538,21 +536,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &5892142922274573158
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9187406862718065220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 729b38c0503f84e4ebc0c8b65bc6b705, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentBox: {fileID: 6548345275017489693}
-  spawnForce: 5
-  gameManager: {fileID: 0}
 --- !u!82 &5377836329240303713
 AudioSource:
   m_ObjectHideFlags: 0
@@ -649,3 +632,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7179737496884358747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9187406862718065220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 729b38c0503f84e4ebc0c8b65bc6b705, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  spawned: 0
+  audio: {fileID: 5377836329240303713}
+  parentBox: {fileID: 6548345275017489693}
+  spawnForce: 0

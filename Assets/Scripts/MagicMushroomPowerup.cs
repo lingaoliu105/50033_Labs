@@ -6,36 +6,50 @@ using UnityEngine;
 public class MagicMushroomPowerup : BasePowerup
 {
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
         base.Start();
         type = PowerupType.MagicMushroom;
+        Hide();
     }
 
-    public override void SpawnPowerup()
+    public override void Spawn()
     {
+        Show();
         spawned = true;
-        rigidBody.AddForce(Vector2.right*3,ForceMode2D.Impulse);
+        rigidBody.AddForce(Vector2.up * spawnForce, ForceMode2D.Impulse);
+    }
+
+    public void Update()
+    {
+        if (spawned == true && rigidBody.bodyType==RigidbodyType2D.Dynamic)
+        {
+            rigidBody.MovePosition(rigidBody.position + Vector2.right * ((goRight?1:-1) * (3 * Time.fixedDeltaTime)));
+        }
     }
 
     public override void ApplyPowerup(MonoBehaviour i)
     {
         // TODO: complete this
+        Debug.Log("Magic Powerup");
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        
         if (other.gameObject.CompareTag("Player") && spawned)
         {
             // TODO: take effect
-            
-            DestroyPowerup();
-        }else if (other.gameObject.layer == 10)
+            Hide();
+            audio.PlayOneShot(audio.clip);
+            ApplyPowerup(other.gameObject.GetComponent<MonoBehaviour>());
+        }else if (other.gameObject.layer == 3)
         {
+            Debug.Log("Collide");
             if (spawned)
             {
                 goRight = !goRight;
-                rigidBody.AddForce(Vector2.right*3*(goRight?1:-1),ForceMode2D.Impulse);
+                Debug.Log(goRight);
             }
         }
     }

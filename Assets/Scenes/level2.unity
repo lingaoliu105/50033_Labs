@@ -334,6 +334,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1404977423663744165}
     - target: {fileID: 6598352979958608730, guid: 15fdaa054cff37f439472ef23730ffe5, type: 3}
+      propertyPath: statistics
+      value: 
+      objectReference: {fileID: 11400000, guid: fe0713c93f640504bbf98bf44c39805b, type: 2}
+    - target: {fileID: 6598352979958608730, guid: 15fdaa054cff37f439472ef23730ffe5, type: 3}
       propertyPath: MarioMovement
       value: 
       objectReference: {fileID: 4447861143545605606}

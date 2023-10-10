@@ -12,6 +12,7 @@ TagManager:
   - oneTimePlatform
   - board
   - win
+  - PowerUp
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - Ground
   - Coins
   - Background
-  - 
+  - PowerUp
   - 
   - 
   - 

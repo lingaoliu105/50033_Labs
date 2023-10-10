@@ -8,6 +8,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1173848087607887602, guid: 0bf8c3c83b0280a4c9b262414091b33b, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1173848087607887602, guid: 0bf8c3c83b0280a4c9b262414091b33b, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1173848087607887602, guid: 0bf8c3c83b0280a4c9b262414091b33b, type: 3}
+      propertyPath: m_GravityScale
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2016123286480967571, guid: 0bf8c3c83b0280a4c9b262414091b33b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -52,12 +64,75 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -1082275380, guid: 82bc45c4496284f4c823d1b837f65ec4, type: 3}
+    - target: {fileID: 5375037422050467091, guid: 0bf8c3c83b0280a4c9b262414091b33b, type: 3}
+      propertyPath: m_Size.x
+      value: 0.9927925
+      objectReference: {fileID: 0}
+    - target: {fileID: 5375037422050467091, guid: 0bf8c3c83b0280a4c9b262414091b33b, type: 3}
+      propertyPath: m_Size.y
+      value: 1.0022323
+      objectReference: {fileID: 0}
+    - target: {fileID: 5375037422050467091, guid: 0bf8c3c83b0280a4c9b262414091b33b, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.0023599267
+      objectReference: {fileID: 0}
+    - target: {fileID: 5375037422050467091, guid: 0bf8c3c83b0280a4c9b262414091b33b, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.0047199577
+      objectReference: {fileID: 0}
+    - target: {fileID: 5377836329240303713, guid: 0bf8c3c83b0280a4c9b262414091b33b, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: cdc43de50f4574c75afcc7e74975b29a, type: 3}
     - target: {fileID: 6548345275017489693, guid: 0bf8c3c83b0280a4c9b262414091b33b, type: 3}
       propertyPath: m_Name
       value: PowerupQuestionBox
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 9187406862718065220, guid: 0bf8c3c83b0280a4c9b262414091b33b, type: 3}
+      propertyPath: m_Name
+      value: MagicMashroom
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187406862718065220, guid: 0bf8c3c83b0280a4c9b262414091b33b, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187406862718065220, guid: 0bf8c3c83b0280a4c9b262414091b33b, type: 3}
+      propertyPath: m_TagString
+      value: PowerUp
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7179737496884358747, guid: 0bf8c3c83b0280a4c9b262414091b33b, type: 3}
+    - {fileID: 6319924915327377088, guid: 0bf8c3c83b0280a4c9b262414091b33b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9187406862718065220, guid: 0bf8c3c83b0280a4c9b262414091b33b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2440741240758927291}
   m_SourcePrefab: {fileID: 100100000, guid: 0bf8c3c83b0280a4c9b262414091b33b, type: 3}
+--- !u!1 &1396276359251506221 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9187406862718065220, guid: 0bf8c3c83b0280a4c9b262414091b33b, type: 3}
+  m_PrefabInstance: {fileID: 7845455467110067817}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2440741240758927291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1396276359251506221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e870625842de4745afd28fdb9b49207, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  spawned: 0
+  audio: {fileID: 2756556500015183368}
+  spawnForce: 4
+--- !u!82 &2756556500015183368 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5377836329240303713, guid: 0bf8c3c83b0280a4c9b262414091b33b, type: 3}
+  m_PrefabInstance: {fileID: 7845455467110067817}
+  m_PrefabAsset: {fileID: 0}
