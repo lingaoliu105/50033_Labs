@@ -73,16 +73,16 @@ public class CameraController : MonoBehaviour
         {
             desiredX = endX;
         }
-        if (desiredY < lowY)
+        if (desiredY < lowY+viewportHalfHeight)
         {
-            desiredY = lowY;
+            desiredY = lowY+viewportHalfHeight;
         }
         else if (desiredY > upY)
         {
             desiredY = upY;
         }
 
-        if (desiredY >= upCheck - playerHeight || desiredY <= downCheck + playerHeight + 1)
+        if (desiredY >= upCheck - playerHeight || desiredY <= downCheck + viewportHalfHeight)
         {
             // transform.position = Vector3.SmoothDamp(transform.position, target.position, ref velocity, smoothTime);
             Vector3 targetPosition = new Vector3(desiredX, desiredY, this.transform.position.z);
@@ -90,7 +90,8 @@ public class CameraController : MonoBehaviour
         }
         else
         {
-            this.transform.position = new Vector3(desiredX, this.transform.position.y, this.transform.position.z);
+            Vector3 targetPosition = new Vector3(desiredX, this.transform.position.y, this.transform.position.z);
+            this.transform.position = Vector3.SmoothDamp(this.transform.position, targetPosition, ref velocity, smoothTime);
         }
 
         if (this.transform.position.x < startX)
@@ -105,10 +106,9 @@ public class CameraController : MonoBehaviour
         {
             this.transform.position = new Vector3(this.transform.position.x, upY, this.transform.position.z);
         }
-        else if (this.transform.position.y < lowY)
+        else if (this.transform.position.y < lowY+viewportHalfHeight)
         {
-            this.transform.position = new Vector3(this.transform.position.x, lowY, this.transform.position.z);
+            this.transform.position = new Vector3(this.transform.position.x, lowY+viewportHalfHeight, this.transform.position.z);
         }
-
     }
 }
