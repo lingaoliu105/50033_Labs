@@ -22,6 +22,7 @@ public class GameManager : Singleton<GameManager>
     {
         Time.timeScale = 0.0f;
         SceneManager.activeSceneChanged += SceneSetup;
+        statistics.score = 0;
     }
 
     private void SceneSetup(Scene arg0, Scene arg1)

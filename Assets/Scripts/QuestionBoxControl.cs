@@ -50,16 +50,16 @@ public class QuestionBoxControl : MonoBehaviour,IPowerupController
             {
                 boxAnim.SetTrigger("hitFromBottom");
                 animTriggerIsSet = true;
-                Spawn();
+                SpawnPowerup();
             }
             if (Math.Abs(boxBody.transform.position.y - defaultPositionY) < 0.01 && animTriggerIsSet)
             {
-                animTriggerIsSet = false;
+                Disable();
             }
             
         }
     }
-    void Spawn()
+    void SpawnPowerup()
     {
         if (willSpawn)
         {
@@ -70,14 +70,14 @@ public class QuestionBoxControl : MonoBehaviour,IPowerupController
 
     public void ResetObject()
     {
+        animTriggerIsSet = false;
         boxBody.bodyType = RigidbodyType2D.Dynamic;
-        Debug.Log(boxBody.bodyType);
         boxAnim.SetTrigger("reset");
         powerUp.ResetObject();
     }
 
     public void Disable()
     {
-        throw new NotImplementedException();
+        boxBody.bodyType = RigidbodyType2D.Static;
     }
 }

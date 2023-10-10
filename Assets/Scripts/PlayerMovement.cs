@@ -94,29 +94,27 @@ public class PlayerMovement : MonoBehaviour
 
         if (col.gameObject.CompareTag("Enemy") && alive)
         {
-            if (col.contacts.Length > 0)
+            Vector2 otherPosition = col.gameObject.transform.position;
+            if (IsUnderneath(otherPosition))
             {
-                Vector2 otherPosition = col.gameObject.transform.position;
-                if (IsUnderneath(otherPosition))
+                marioAnimator.SetBool("onGround", true);
+                var enemy = col.gameObject;
+                if (enemy.GetComponent<EnemyMovement>())
                 {
-                    marioAnimator.SetBool("onGround", true);
-                    var enemy = col.gameObject;
-                    if (enemy.GetComponent<EnemyMovement>())
-                    {
-                        enemy.GetComponent<EnemyMovement>().Stomped();
-                    }
-                    GameManager.instance.IncreaseScore(1);
-                    Jump(multiImpulse);
+                    enemy.GetComponent<EnemyMovement>().Stomped();
                 }
-                else
-                {
-                    // play death animation
-                    marioAnimator.Play("mario_die");
-                    marioDeath.PlayOneShot(marioDeath.clip);
-                    alive = false;
-
-                }
+                GameManager.instance.IncreaseScore(1);
+                Jump(multiImpulse);
             }
+            else
+            {
+                // play death animation
+                marioAnimator.Play("mario_die");
+                marioDeath.PlayOneShot(marioDeath.clip);
+                alive = false;
+
+            }
+            
         }
 
         if (col.gameObject.CompareTag("Coin") && alive)

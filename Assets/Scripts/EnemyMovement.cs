@@ -6,7 +6,6 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
 
-    private float originalX;
     private float maxOffset = 5.0f;
     private float enemyPatroltime = 2.0f;
     private int moveRight = -1;
@@ -19,6 +18,10 @@ public class EnemyMovement : MonoBehaviour
     private Vector3 startPosition;
     int collisionLayerMask = (1 << 3) | (1 << 7);
 
+    private void Awake()
+    {
+        GameManager.instance.gameReset.AddListener(ResetObject);
+    }
 
     void Start()
     {
@@ -27,10 +30,7 @@ public class EnemyMovement : MonoBehaviour
         
         startPosition = transform.position;
         enemyBody = GetComponent<Rigidbody2D>();
-        // get the starting position
-        originalX = transform.position.x;
         ComputeVelocity();
-        
     }
     void ComputeVelocity()
     {
@@ -43,7 +43,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        if (Mathf.Abs(enemyBody.position.x - originalX) < maxOffset)
+        if (Mathf.Abs(enemyBody.position.x - startPosition.x) < maxOffset)
         {// move goomba
             Movegoomba();
         }
@@ -63,7 +63,6 @@ public class EnemyMovement : MonoBehaviour
             if (collision.transform.position.x < transform.position.x)
             {
                 moveRight =1;
-                
             }
             else
             {
@@ -79,19 +78,24 @@ public class EnemyMovement : MonoBehaviour
     public void Stomped()
     {
         goombaAnim.SetTrigger("Stomped");
+        transform.localScale = new Vector3(1,0.5f,1);
         enemyBody.bodyType = RigidbodyType2D.Dynamic;
         enemyBody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
         goombaAudio.PlayOneShot(goombaAudio.clip);
         gameObject.layer = 9;
+        StartCoroutine(Disable());
     }
 
-    public void Disable()
+    public IEnumerator Disable()   
     {
+        yield return new WaitForSeconds(1);
         gameObject.SetActive(false);
     }
 
     public void ResetObject()
     {
+        transform.localScale = new Vector3(1,1,1);
+        enemyBody.constraints = RigidbodyConstraints2D.FreezeRotation;
         transform.position = startPosition;
         enemyBody.bodyType = RigidbodyType2D.Kinematic;
         gameObject.SetActive(true);
