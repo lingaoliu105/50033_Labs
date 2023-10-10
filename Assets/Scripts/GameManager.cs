@@ -13,7 +13,9 @@ public class GameManager : Singleton<GameManager>
     public UnityEvent<int> gameOver;
     public UnityEvent gamePause;
     public UnityEvent gameResume;
-
+    public UnityEvent highestScoreUpdate;
+    public UnityEvent gameBackToMain;
+    
     public GameStatistics statistics;
     
 
@@ -41,12 +43,19 @@ public class GameManager : Singleton<GameManager>
         ResetGame();
     }
 
+    public void BackToMainCasllback()
+    {
+        ResetGame();
+        gameBackToMain.Invoke();
+    }
+
     void SetScore(int score)
     {
         statistics.score = score;
         if (statistics.score > statistics.highestScore)
         {
             statistics.highestScore = statistics.score;
+            highestScoreUpdate.Invoke();
         }
         scoreChange.Invoke(score);
     }
@@ -55,7 +64,7 @@ public class GameManager : Singleton<GameManager>
     {
         SetScore(statistics.score+increment);
     }
-    private void ResetGame()
+    public void ResetGame()
     {
         SetScore(0);        
         gameReset.Invoke();
@@ -78,5 +87,11 @@ public class GameManager : Singleton<GameManager>
     {
         Time.timeScale = 1.0f;
         gameResume.Invoke();
+    }
+
+    public void ResetHighestScore()
+    {
+        statistics.highestScore = 0;
+        highestScoreUpdate.Invoke();
     }
 }

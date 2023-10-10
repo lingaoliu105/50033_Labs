@@ -10,6 +10,7 @@ public class HUDManager : MonoBehaviour
     private Canvas gameOverScreen;
     private Canvas gameStartScreen;
     private Canvas pauseScreen;
+    private CanvasGroup FadedGroup;
 
     void Awake()
     {
@@ -19,6 +20,7 @@ public class HUDManager : MonoBehaviour
         gm.gameOver.AddListener(GameOver);
         gm.gamePause.AddListener(ShowPauseScreen);
         gm.gameResume.AddListener(ClosePauseScreen);
+        gm.gameBackToMain.AddListener(DefaultActive);
     }
 
     private void ClosePauseScreen()
@@ -48,10 +50,16 @@ public class HUDManager : MonoBehaviour
     private void GameStart()
     {
         gameStartScreen.gameObject.SetActive(false);
-        gameScreen.gameObject.SetActive(true);
+        FadedGroup.gameObject.SetActive(true);
+        FadedGroup.gameObject.GetComponentInChildren<LoadScreenController>().ShowLoadingScreen();
     }
 
     void Start()
+    {
+        DefaultActive();
+    }
+
+    void DefaultActive()
     {
         foreach (Transform childTransform in transform)
         {
@@ -73,9 +81,11 @@ public class HUDManager : MonoBehaviour
                     gameScreen = childTransform.GetComponent<Canvas>();
                     gameScreen.gameObject.SetActive(false);
                     break;
+                case "FadedGroup":
+                    FadedGroup = childTransform.GetComponent<CanvasGroup>();
+                    FadedGroup.gameObject.SetActive(false);
+                    break;
             }
         }
     }
-
-
 }
