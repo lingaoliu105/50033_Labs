@@ -14,7 +14,6 @@ public class NextScene : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             SceneManager.LoadSceneAsync(nextSceneName, LoadSceneMode.Single);
-            
         } 
     }
 }

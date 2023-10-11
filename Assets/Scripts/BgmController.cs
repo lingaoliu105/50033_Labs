@@ -5,6 +5,8 @@ using UnityEngine;
 public class BgmController : MonoBehaviour
 {
     public AudioSource BgmAudio;
+
+    private bool gameStarted = false; 
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +30,7 @@ public class BgmController : MonoBehaviour
     }
     public void PlayMusic()
     {
+        gameStarted = true; 
         GetComponent<AudioSource>().Play();
     }
 

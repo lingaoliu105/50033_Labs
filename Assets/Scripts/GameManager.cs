@@ -33,6 +33,7 @@ public class GameManager : Singleton<GameManager>
     {
         // gameStart.Invoke();
         isFirstScene = false;
+        playMusic.Invoke();
         SetScore(statistics.score);
     }
 
