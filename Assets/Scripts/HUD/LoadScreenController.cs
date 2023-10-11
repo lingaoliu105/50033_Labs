@@ -6,7 +6,7 @@ using UnityEngine;
 public class LoadScreenController : MonoBehaviour
 {
     private TextMeshProUGUI highestScoreText;
-
+    private Canvas LoadingScreen;
     public CanvasGroup c;
     // Start is called before the first frame update
     protected void Awake()
@@ -15,6 +15,7 @@ public class LoadScreenController : MonoBehaviour
     }
     void Start()
     {
+        LoadingScreen = GetComponent<Canvas>();
         UpdateScore();
     }
 
@@ -29,9 +30,10 @@ public class LoadScreenController : MonoBehaviour
         for (float alpha = 2f; alpha >= -0.05f; alpha -= 0.05f)
         {
             c.alpha = alpha;
-            yield return new WaitForSecondsRealtime(0.1f);
+            yield return new WaitForSecondsRealtime(0.005f);
         }
         // once done, go to next scene
+        LoadingScreen.gameObject.SetActive(false);
     }
     
     void UpdateScore()
