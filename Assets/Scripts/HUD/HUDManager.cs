@@ -47,11 +47,26 @@ public class HUDManager : MonoBehaviour
         gameStartScreen.gameObject.SetActive(false);
     }
 
-    private void GameStart()
+    private IEnumerator GameStartCorountine()
     {
         gameStartScreen.gameObject.SetActive(false);
         FadedGroup.gameObject.SetActive(true);
         FadedGroup.gameObject.GetComponentInChildren<LoadScreenController>().ShowLoadingScreen();
+        yield return new WaitForSeconds(1);
+        gameScreen.gameObject.SetActive(true);
+        GameManager.instance.PlayMusic();
+        
+    }
+    
+    private void GameStart()
+    {
+        StartCoroutine(GameStartCorountine());
+        //Invoke("GameScreenShow", 3f);;
+    }
+
+    private void GameScreenShow()
+    {
+        gameScreen.gameObject.SetActive(true);
     }
 
     void Start()

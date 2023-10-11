@@ -15,6 +15,7 @@ public class GameManager : Singleton<GameManager>
     public UnityEvent gameResume;
     public UnityEvent highestScoreUpdate;
     public UnityEvent gameBackToMain;
+    public UnityEvent playMusic;
     
     public GameStatistics statistics;
     
@@ -33,6 +34,11 @@ public class GameManager : Singleton<GameManager>
         SetScore(statistics.score);
     }
 
+    public void PlayMusic()
+    {
+        playMusic.Invoke();
+    }
+    
     public void GameOver()
     {
         Time.timeScale = 0.0f;

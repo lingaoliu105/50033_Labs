@@ -4,39 +4,40 @@ using UnityEngine;
 
 public class BgmController : MonoBehaviour
 {
-    public AudioClip[] audios;
-    public Transform player;
-    private bool changed = false;
-
-    private AudioSource _audioSource;
-
+    public AudioSource BgmAudio;
     // Start is called before the first frame update
     void Start()
     {
-        _audioSource = GetComponent<AudioSource>();
-        _audioSource.clip = audios[0];
-        _audioSource.Play();
+        BgmAudio = GetComponent<AudioSource>();
+    }
+
+    private void Awake()
+    {
+        GameManager gm = GameManager.instance;
+        gm.playMusic.AddListener(PlayMusic);
+        gm.gamePause.AddListener(PauseMusic);
+        gm.gameResume.AddListener(PlayMusic);
+        gm.gameReset.AddListener(PlayMusic);
+        gm.gameOver.AddListener(StopMusic);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_audioSource.isPlaying)
-        {
-            if (player.transform.position.x > 15 && changed == false)
-            {
-                _audioSource.clip = audios[1];
-                _audioSource.Play();
-                changed = true;
-            }
-        }
+        
+    }
+    public void PlayMusic()
+    {
+        GetComponent<AudioSource>().Play();
     }
 
-    void OnGameOver()
+    public void PauseMusic()
     {
-        if (_audioSource.isPlaying)
-        {
-            
-        }
+        GetComponent<AudioSource>().Pause();
+    }
+
+    public void StopMusic(int i)
+    {
+        GetComponent<AudioSource>().Stop();
     }
 }
