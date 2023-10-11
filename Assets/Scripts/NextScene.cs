@@ -11,8 +11,7 @@ public class NextScene : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("...");
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             SceneManager.LoadSceneAsync(nextSceneName, LoadSceneMode.Single);
             
