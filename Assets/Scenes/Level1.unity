@@ -1592,6 +1592,9 @@ MonoBehaviour:
   gameBackToMain:
     m_PersistentCalls:
       m_Calls: []
+  playMusic:
+    m_PersistentCalls:
+      m_Calls: []
   statistics: {fileID: 11400000, guid: fe0713c93f640504bbf98bf44c39805b, type: 2}
 --- !u!4 &855063589
 Transform:
@@ -3046,7 +3049,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c91d0a19efc719048a07d523271e5107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audio: {fileID: 1585385117}
+  BgmAudio: {fileID: 0}
 --- !u!1 &1601669001
 GameObject:
   m_ObjectHideFlags: 0
@@ -4145,10 +4148,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2756556500015183368, guid: 4cfd722c25b75f44586f061f17c16aaf, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 33812802336918452, guid: f9be79d6b96a31c40ba3af8e84fe1c88, type: 2}
     - target: {fileID: 3891336007995065204, guid: 4cfd722c25b75f44586f061f17c16aaf, type: 3}
       propertyPath: m_Name
       value: PowerupQuestionBox
