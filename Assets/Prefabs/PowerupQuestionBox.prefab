@@ -87,7 +87,7 @@ PrefabInstance:
     - target: {fileID: 5377836329240303713, guid: 0bf8c3c83b0280a4c9b262414091b33b, type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
-      objectReference: {fileID: -1219094908903996186, guid: f9be79d6b96a31c40ba3af8e84fe1c88, type: 2}
+      objectReference: {fileID: 33812802336918452, guid: f9be79d6b96a31c40ba3af8e84fe1c88, type: 2}
     - target: {fileID: 6548345275017489693, guid: 0bf8c3c83b0280a4c9b262414091b33b, type: 3}
       propertyPath: m_Name
       value: PowerupQuestionBox
@@ -140,7 +140,7 @@ MonoBehaviour:
   spawned: 0
   audio: {fileID: 2756556500015183368}
   spawnForce: 4
-  mashroomPop: {fileID: 8606355903687539923}
+  mushroomPop: {fileID: 8606355903687539923}
 --- !u!82 &8606355903687539923
 AudioSource:
   m_ObjectHideFlags: 0
