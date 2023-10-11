@@ -7,6 +7,6 @@ public class ResetHighScoreButton : MonoBehaviour,IInteractiveButton
 
     public void ButtonClick()
     {
-        GameManager.instance.statistics.highestScore = 0;
+        GameManager.instance.ResetHighestScore();
     }
 }
