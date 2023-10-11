@@ -103,7 +103,7 @@ public class HUDManager : MonoBehaviour
                     break;
                 case "GameScreen":
                     gameScreen = childTransform.GetComponent<Canvas>();
-                    gameScreen.gameObject.SetActive(false);
+                    gameScreen.gameObject.SetActive(!GameManager.instance.isFirstScene);
                     break;
                 case "FadedGroup":
                     FadedGroup = childTransform.GetComponent<CanvasGroup>();

@@ -268,22 +268,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5188362108470663246, guid: 0bf8c3c83b0280a4c9b262414091b33b, type: 3}
-      propertyPath: gameManager
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5377836329240303713, guid: 0bf8c3c83b0280a4c9b262414091b33b, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 135893526984039419, guid: f9be79d6b96a31c40ba3af8e84fe1c88, type: 2}
-    - target: {fileID: 5892142922274573158, guid: 0bf8c3c83b0280a4c9b262414091b33b, type: 3}
-      propertyPath: coinAudio
-      value: 
-      objectReference: {fileID: 1117951853}
-    - target: {fileID: 5892142922274573158, guid: 0bf8c3c83b0280a4c9b262414091b33b, type: 3}
-      propertyPath: gameManager
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 6548345275017489693, guid: 0bf8c3c83b0280a4c9b262414091b33b, type: 3}
       propertyPath: m_Name
       value: QuestionBox
@@ -1728,11 +1712,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!82 &1117951853 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 5377836329240303713, guid: 0bf8c3c83b0280a4c9b262414091b33b, type: 3}
-  m_PrefabInstance: {fileID: 109638751}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1224966290 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2016123286480967571, guid: 0bf8c3c83b0280a4c9b262414091b33b, type: 3}
