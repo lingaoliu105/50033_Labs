@@ -145,7 +145,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Get Mashroom
+  m_Name: Get Mushroom
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 761fe680c2f8c1b4aa130bd2f4bae679
   m_Children: []
