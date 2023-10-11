@@ -21,6 +21,7 @@ public class BgmController : MonoBehaviour
         gm.gameResume.AddListener(PlayMusic);
         gm.gameReset.AddListener(PlayMusic);
         gm.gameOver.AddListener(StopMusic);
+        gm.gameBackToMain.AddListener(StopMusic);
     }
 
     // Update is called once per frame
@@ -40,6 +41,10 @@ public class BgmController : MonoBehaviour
     }
 
     public void StopMusic(int i)
+    {
+        GetComponent<AudioSource>().Stop();
+    }
+    public void StopMusic()
     {
         GetComponent<AudioSource>().Stop();
     }

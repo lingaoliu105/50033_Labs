@@ -11,17 +11,18 @@ public class LoadScreenController : MonoBehaviour
     // Start is called before the first frame update
     protected void Awake()
     {
+        LoadingScreen = GetComponent<Canvas>();
         GameManager.instance.highestScoreUpdate.AddListener(UpdateScore);
     }
     void Start()
     {
-        LoadingScreen = GetComponent<Canvas>();
         UpdateScore();
     }
 
     public void ShowLoadingScreen()
     {
         UpdateScore();
+        LoadingScreen.gameObject.SetActive(true);
         StartCoroutine(Fade());
     }
 
