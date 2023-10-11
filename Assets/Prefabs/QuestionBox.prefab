@@ -634,5 +634,5 @@ MonoBehaviour:
   type: 0
   spawned: 0
   audio: {fileID: 5377836329240303713}
-  spawnForce: 0
+  spawnForce: 5
   parentBox: {fileID: 6548345275017489693}

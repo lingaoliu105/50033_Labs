@@ -11,6 +11,7 @@ public class HUDManager : MonoBehaviour
     private Canvas gameStartScreen;
     private Canvas pauseScreen;
     private CanvasGroup FadedGroup;
+    private LoadScreenController _loadScreenController;
 
     void Awake()
     {
@@ -20,7 +21,21 @@ public class HUDManager : MonoBehaviour
         gm.gameOver.AddListener(GameOver);
         gm.gamePause.AddListener(ShowPauseScreen);
         gm.gameResume.AddListener(ClosePauseScreen);
-        gm.gameBackToMain.AddListener(DefaultActive);
+        gm.gameBackToMain.AddListener(ResetScenes);
+    }
+
+    private void ResetScenes()
+    {
+        gameOverScreen.gameObject.SetActive(false);
+
+        gameStartScreen.gameObject.SetActive(true);
+
+        pauseScreen.gameObject.SetActive(false);
+
+        gameScreen.gameObject.SetActive(false);
+
+        FadedGroup.gameObject.SetActive(false);
+
     }
 
     private void ClosePauseScreen()
@@ -51,11 +66,10 @@ public class HUDManager : MonoBehaviour
     {
         gameStartScreen.gameObject.SetActive(false);
         FadedGroup.gameObject.SetActive(true);
-        FadedGroup.gameObject.GetComponentInChildren<LoadScreenController>().ShowLoadingScreen();
+        _loadScreenController.ShowLoadingScreen();
         yield return new WaitForSeconds(1);
         gameScreen.gameObject.SetActive(true);
         GameManager.instance.PlayMusic();
-        
     }
     
     private void GameStart()
@@ -71,11 +85,6 @@ public class HUDManager : MonoBehaviour
 
     void Start()
     {
-        DefaultActive();
-    }
-
-    void DefaultActive()
-    {
         foreach (Transform childTransform in transform)
         {
             switch (childTransform.name)
@@ -86,7 +95,7 @@ public class HUDManager : MonoBehaviour
                     break;
                 case "GameStartScreen":
                     gameStartScreen = childTransform.GetComponent<Canvas>();
-                    gameStartScreen.gameObject.SetActive(true);
+                    gameStartScreen.gameObject.SetActive(GameManager.instance.isFirstScene);
                     break;
                 case "PauseScreen":
                     pauseScreen = childTransform.GetComponent<Canvas>();
@@ -98,9 +107,11 @@ public class HUDManager : MonoBehaviour
                     break;
                 case "FadedGroup":
                     FadedGroup = childTransform.GetComponent<CanvasGroup>();
+                    _loadScreenController = FadedGroup.gameObject.GetComponentInChildren<LoadScreenController>();
                     FadedGroup.gameObject.SetActive(false);
                     break;
             }
         }
     }
+    
 }

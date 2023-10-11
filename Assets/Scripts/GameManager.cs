@@ -18,11 +18,12 @@ public class GameManager : Singleton<GameManager>
     public UnityEvent playMusic;
     
     public GameStatistics statistics;
-    
+    public bool isFirstScene;
 
     // Start is called before the first frame update
     void Start()
     {
+        isFirstScene = true;
         Time.timeScale = 0.0f;
         SceneManager.activeSceneChanged += SceneSetup;
         statistics.score = 0;
@@ -30,7 +31,8 @@ public class GameManager : Singleton<GameManager>
 
     private void SceneSetup(Scene arg0, Scene arg1)
     {
-        gameStart.Invoke();
+        // gameStart.Invoke();
+        isFirstScene = false;
         SetScore(statistics.score);
     }
 

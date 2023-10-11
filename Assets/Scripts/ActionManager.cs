@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-public class ActionManager : Singleton<ActionManager>
+public class ActionManager : MonoBehaviour
 {
     public UnityEvent jump;
     public UnityEvent jumpHold;

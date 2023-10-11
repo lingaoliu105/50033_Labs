@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!82 &55873326 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 5377836329240303713, guid: 0bf8c3c83b0280a4c9b262414091b33b, type: 3}
-  m_PrefabInstance: {fileID: 386639905}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &63752332
 GameObject:
   m_ObjectHideFlags: 0
@@ -1592,7 +1587,11 @@ MonoBehaviour:
   gameBackToMain:
     m_PersistentCalls:
       m_Calls: []
+  playMusic:
+    m_PersistentCalls:
+      m_Calls: []
   statistics: {fileID: 11400000, guid: fe0713c93f640504bbf98bf44c39805b, type: 2}
+  isFirstScene: 0
 --- !u!4 &855063589
 Transform:
   m_ObjectHideFlags: 0
@@ -2512,6 +2511,67 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &1402105191
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 706028259393172855, guid: 0f820c0d192206244a6aca9c90f06787, type: 3}
+      propertyPath: m_Name
+      value: misc-3_205
+      objectReference: {fileID: 0}
+    - target: {fileID: 879879083661415419, guid: 0f820c0d192206244a6aca9c90f06787, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11.803818
+      objectReference: {fileID: 0}
+    - target: {fileID: 879879083661415419, guid: 0f820c0d192206244a6aca9c90f06787, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.2439628
+      objectReference: {fileID: 0}
+    - target: {fileID: 879879083661415419, guid: 0f820c0d192206244a6aca9c90f06787, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 879879083661415419, guid: 0f820c0d192206244a6aca9c90f06787, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 879879083661415419, guid: 0f820c0d192206244a6aca9c90f06787, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 879879083661415419, guid: 0f820c0d192206244a6aca9c90f06787, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 879879083661415419, guid: 0f820c0d192206244a6aca9c90f06787, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 879879083661415419, guid: 0f820c0d192206244a6aca9c90f06787, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 879879083661415419, guid: 0f820c0d192206244a6aca9c90f06787, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 879879083661415419, guid: 0f820c0d192206244a6aca9c90f06787, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316403419743844685, guid: 0f820c0d192206244a6aca9c90f06787, type: 3}
+      propertyPath: nextSceneName
+      value: Level2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0f820c0d192206244a6aca9c90f06787, type: 3}
 --- !u!1 &1482006450 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1751538383722930479, guid: 6f3ffc0c7e0b8174bba5a9cbde67edfe, type: 3}
@@ -3046,7 +3106,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c91d0a19efc719048a07d523271e5107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audio: {fileID: 1585385117}
 --- !u!1 &1601669001
 GameObject:
   m_ObjectHideFlags: 0
@@ -3131,7 +3190,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1648759625
+--- !u!1001 &1713408497
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -3145,7 +3204,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2448558218697293506, guid: 8cb67dcc07bae6a4d9b0674b34971ffa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 2448558218697293506, guid: 8cb67dcc07bae6a4d9b0674b34971ffa, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3179,36 +3238,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5498897658890405432, guid: 8cb67dcc07bae6a4d9b0674b34971ffa, type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 2025142165}
-    - target: {fileID: 6227390772856762243, guid: 8cb67dcc07bae6a4d9b0674b34971ffa, type: 3}
-      propertyPath: coinSound
-      value: 
-      objectReference: {fileID: 55873326}
-    - target: {fileID: 6227390772856762243, guid: 8cb67dcc07bae6a4d9b0674b34971ffa, type: 3}
-      propertyPath: gameCamera
-      value: 
-      objectReference: {fileID: 2025142166}
     - target: {fileID: 7036721868022725217, guid: 8cb67dcc07bae6a4d9b0674b34971ffa, type: 3}
       propertyPath: m_Name
       value: Mario
-      objectReference: {fileID: 0}
-    - target: {fileID: 7036721868022725217, guid: 8cb67dcc07bae6a4d9b0674b34971ffa, type: 3}
-      propertyPath: m_TagString
-      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cb67dcc07bae6a4d9b0674b34971ffa, type: 3}
---- !u!4 &1648759626 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2448558218697293506, guid: 8cb67dcc07bae6a4d9b0674b34971ffa, type: 3}
-  m_PrefabInstance: {fileID: 1648759625}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1735470095
 GameObject:
   m_ObjectHideFlags: 0
@@ -4000,7 +4038,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e6ceb2c6871e884d81b5d089f4074c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1648759626}
+  player: {fileID: 0}
   startLimit: {fileID: 427557563}
   startLimit2: {fileID: 427557562}
   endLimit1: {fileID: 427557561}
@@ -4289,7 +4327,6 @@ SceneRoots:
   - {fileID: 855063589}
   - {fileID: 2025142166}
   - {fileID: 1585385116}
-  - {fileID: 1648759625}
   - {fileID: 2019038785}
   - {fileID: 535831983}
   - {fileID: 301213316}
@@ -4299,3 +4336,5 @@ SceneRoots:
   - {fileID: 1064760840}
   - {fileID: 427557557}
   - {fileID: 1601669003}
+  - {fileID: 1402105191}
+  - {fileID: 1713408497}

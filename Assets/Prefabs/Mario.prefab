@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 1332268969506230633}
   m_Layer: 0
   m_Name: Mario
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -179,7 +179,6 @@ MonoBehaviour:
   speed: 15
   maxSpeed: 45
   upSpeed: 16
-  gameManager: {fileID: 0}
   defaultPosition: {x: 0, y: 1.25, z: 0}
   marioAnimator: {fileID: 8059978848613566690}
   marioAudio: {fileID: 2941827131710938641}

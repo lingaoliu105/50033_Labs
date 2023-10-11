@@ -23,17 +23,13 @@ public class PlayerMovement : MonoBehaviour
     public AudioSource marioAudio;
     public AudioSource marioDeath;
     public AudioSource coinSound;
-    public Transform gameCamera;
-
     public float deathImpulse = 30;
 
     public float marioHeight;
 
     public float marioWidth;
     int collisionLayerMask = (1 << 3) | (1 << 6) | (1 << 7);
-
-    public Transform deathHeight;
-
+    
     private bool moving = false;
     private bool jumpState = false;
 
@@ -41,9 +37,7 @@ public class PlayerMovement : MonoBehaviour
     // state
     [System.NonSerialized]
     public bool alive = true;
-
-    public GameConstants GameConstants;
-
+    
     void Awake()
     {
         GameManager.instance.gameReset.AddListener(ResetObject);
@@ -68,14 +62,7 @@ public class PlayerMovement : MonoBehaviour
             marioAudio = GetComponent<AudioSource>();
         }
     }
-
-    public void SetStartingPosition(Scene current, Scene next)
-    {
-        if (next.name == GameConstants.scene2Name)
-        {
-            transform.position = GameConstants.scene2DefaultPosition;
-        }
-    }
+    
 
     void OnCollisionEnter2D(Collision2D col)
     {
