@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class MagicMushroomPowerup : BasePowerup
 {
+    public AudioSource mushroomPop;
     // Start is called before the first frame update
     new void Start()
     {
@@ -15,6 +16,7 @@ public class MagicMushroomPowerup : BasePowerup
 
     public override void Spawn()
     {
+        mushroomPop.Play();
         Show();
         spawned = true;
         rigidBody.AddForce(Vector2.up * spawnForce, ForceMode2D.Impulse);

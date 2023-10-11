@@ -17,6 +17,7 @@ public class QuestionBoxControl : MonoBehaviour,IPowerupController
     public bool willSpawn;
 
     private BasePowerup powerUp;
+    
 
     private void Awake()
     {

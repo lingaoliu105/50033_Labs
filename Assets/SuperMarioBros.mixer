@@ -139,6 +139,25 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!243 &-1219094908903996186
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Get Mushroom
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 761fe680c2f8c1b4aa130bd2f4bae679
+  m_Children: []
+  m_Volume: cc9cc49f4b9d1ad44ac0b98d0a67a1c9
+  m_Pitch: e93f45599b9a2ca4eb619d430012265b
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 1361253060237560505}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!244 &-1130645081061089085
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -200,6 +219,8 @@ AudioMixerController:
     - ee20ce63afba22c4aae52c6992d4e195
     - 3b72786d0e9fba945b8007570ba1d200
     - 113b4fc9ccc03574a8e1faa77eb8623b
+    - ed947927a36d5f84aa930fbc966c812b
+    - 761fe680c2f8c1b4aa130bd2f4bae679
     name: View
   - guids:
     - 3f2ccd185cb5f8f4c9b90856a7df14fb
@@ -313,6 +334,7 @@ AudioMixerSnapshotController:
     0986c86db47362c45beb07070438681e: 0.245
     0fdb91ed337b38447bdd796598c0f9c1: 0
     8741389f3d86c354e9745113a63c6aea: 10000
+    956a599fbd5527749910e759a103e167: 20
     8a34ff9fce71f764ead593517d21b2b7: 5000
     e232afbfe2c5a9f42b8ee587d48e1a16: 1000
     da968afff39b05249aa16931bc58f8cb: 1
@@ -323,10 +345,12 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Star
+  m_Name: PowerUp
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 985c181111ff0ab469037ef5e3c9a12f
-  m_Children: []
+  m_Children:
+  - {fileID: 7114310841832447901}
+  - {fileID: -1219094908903996186}
   m_Volume: a1ecb34897abf3d459fd298bbdeeb2e0
   m_Pitch: 6a07fd4778e168b4c9d1f07e8dcd1804
   m_Send: 00000000000000000000000000000000
@@ -356,6 +380,20 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!244 &1361253060237560505
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 2e2fa77cb34673f43b9d11fcd7edc1e9
+  m_EffectName: Attenuation
+  m_MixLevel: ddd4cb5a8d27be34992a3224e0ed7374
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!244 &1661544166234636882
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -412,6 +450,20 @@ AudioMixerEffectController:
   m_EffectID: 8b130be054fda5641b81b1ff6b08234e
   m_EffectName: Attenuation
   m_MixLevel: 2727a7bce6ccb0b499069d54e0ff7cd4
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &2305730083931260039
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: bd2ceaf33164eae46a87f55cf681430d
+  m_EffectName: Attenuation
+  m_MixLevel: 99512dad669e1594c985225ba5626e37
   m_Parameters: []
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
@@ -583,6 +635,25 @@ AudioMixerGroupController:
   - {fileID: 1925854464859611505}
   - {fileID: -8939533689708290625}
   m_UserColorIndex: 1
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!243 &7114310841832447901
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Mashroom Appear
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: ed947927a36d5f84aa930fbc966c812b
+  m_Children: []
+  m_Volume: 956a599fbd5527749910e759a103e167
+  m_Pitch: 22c86115b90524848a53f0ced53fcef1
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 2305730083931260039}
+  m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
