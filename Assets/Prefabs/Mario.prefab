@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 8150153149604785977}
   - component: {fileID: 5498897658890405432}
   - component: {fileID: 1332268969506230633}
+  - component: {fileID: 1523942712393651707}
   m_Layer: 0
   m_Name: Mario
   m_TagString: Player
@@ -184,13 +185,10 @@ MonoBehaviour:
   marioAudio: {fileID: 2941827131710938641}
   marioDeath: {fileID: 1332268969506230633}
   coinSound: {fileID: 0}
-  gameCamera: {fileID: 0}
   deathImpulse: 10
   marioHeight: 1
   marioWidth: 2
-  deathHeight: {fileID: 0}
   multiImpulse: 1.2
-  GameConstants: {fileID: 0}
 --- !u!95 &8059978848613566690
 Animator:
   serializedVersion: 5
@@ -601,3 +599,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1523942712393651707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7036721868022725217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eea7a27c6fdcede489385f003ee657ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startState: {fileID: 11400000, guid: 48e5f6c076bed154d813a7a374bce091, type: 2}
+  previousState: {fileID: 0}
+  currentState: {fileID: 0}
+  remainState: {fileID: 11400000, guid: 7cfb5f98158d01a40b972b438a3a0e1d, type: 2}
+  transitionStateChanged: 0
+  stateTimeElapsed: 0
+  currentPowerupType: -1
+  shouldBeNextState: -1
+  gameConstants: {fileID: 11400000, guid: 1a0afca678bb80f44a882039494157d2, type: 2}
