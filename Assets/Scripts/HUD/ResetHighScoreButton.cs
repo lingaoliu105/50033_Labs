@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class ResetHighScoreButton : MonoBehaviour,IInteractiveButton
 {
-
     public void ButtonClick()
     {
-        GameManager.instance.ResetHighestScore();
+        throw new System.NotImplementedException();
     }
 }

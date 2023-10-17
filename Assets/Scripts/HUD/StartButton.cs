@@ -6,6 +6,6 @@ public class StartButton : MonoBehaviour,IInteractiveButton
 {
     public void ButtonClick()
     {
-        GameManager.instance.StartGame();
+        throw new System.NotImplementedException();
     }
 }

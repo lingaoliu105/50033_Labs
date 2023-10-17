@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SimpleGameEventListener : GameEvent<Object>
+public class IntGameEventListener : GameEventListener<int>
 {
-
+    
 }
-

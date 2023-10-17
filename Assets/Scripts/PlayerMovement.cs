@@ -38,11 +38,6 @@ public class PlayerMovement : MonoBehaviour
     [System.NonSerialized]
     public bool alive = true;
     
-    void Awake()
-    {
-        GameManager.instance.gameReset.AddListener(ResetObject);
-    }
-    
 
     void Start()
     {
@@ -90,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     enemy.GetComponent<EnemyMovement>().Stomped();
                 }
-                GameManager.instance.IncreaseScore(1);
+                //GameManager.instance.IncreaseScore(1);
                 Jump(multiImpulse);
             }
             else
@@ -109,7 +104,7 @@ public class PlayerMovement : MonoBehaviour
             Destroy(col.gameObject);
             Debug.Log("Get 1 coin here");
             coinSound.PlayOneShot(coinSound.clip);
-            GameManager.instance.IncreaseScore(1);
+            //GameManager.instance.IncreaseScore(1);
         }
 
         if (col.gameObject.CompareTag("oneTimePlatform") && alive)
@@ -117,7 +112,7 @@ public class PlayerMovement : MonoBehaviour
 
             Destroy(col.gameObject);
             Debug.Log("Get 1 coin here");
-            GameManager.instance.IncreaseScore(1);
+            //GameManager.instance.IncreaseScore(1);
         }
     }
 
@@ -222,11 +217,6 @@ public class PlayerMovement : MonoBehaviour
                 marioAnimator.SetTrigger("onSkid");
             }
         }
-    }
-
-    void GameOver()
-    {
-        GameManager.instance.GameOver();
     }
 
     public void ResetObject()

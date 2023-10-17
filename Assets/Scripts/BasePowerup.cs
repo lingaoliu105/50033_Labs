@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class BasePowerup : MonoBehaviour, IPowerUp
 {
@@ -15,7 +16,7 @@ public abstract class BasePowerup : MonoBehaviour, IPowerUp
     protected Vector3 defaultPosition;
     public AudioSource audio;
     public float spawnForce;
-
+    public UnityEvent evt;
     protected virtual void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();

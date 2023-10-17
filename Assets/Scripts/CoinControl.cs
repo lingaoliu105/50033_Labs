@@ -33,6 +33,5 @@ public class CoinControl : BasePowerup
     
     public override void ApplyPowerup(MonoBehaviour i)
     {
-        GameManager.instance.IncreaseScore(1);
     }
 }

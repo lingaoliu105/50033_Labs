@@ -5,10 +5,6 @@ using UnityEngine;
 
 public class ObstaclesManager : MonoBehaviour
 {
-    private void Awake()
-    {
-        GameManager.instance.gameReset.AddListener(ResetObject);
-    }
 
     public void ResetObject()
     {

@@ -7,12 +7,7 @@ using UnityEngine;
 public class AbstractScoreDisplayer : MonoBehaviour
 {
     private TextMeshProUGUI scoreText;
-
-    protected void Awake()
-    {
-        GameManager.instance.scoreChange.AddListener(SetScoreText);
-    }
-
+    
     protected void Start()
     {
         scoreText = GetComponent<TextMeshProUGUI>();

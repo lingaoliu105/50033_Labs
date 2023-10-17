@@ -21,12 +21,12 @@ public class PauseButton : MonoBehaviour,IInteractiveButton
     {
         if (isPaused)
         {
-            GameManager.instance.ResumeGame();
+            // GameManager.instance.ResumeGame();
             image.sprite = pauseIcon;
         }
         else
         {
-            GameManager.instance.PauseGame();
+            // GameManager.instance.PauseGame();
             image.sprite = playIcon;
         }
         isPaused = !isPaused;

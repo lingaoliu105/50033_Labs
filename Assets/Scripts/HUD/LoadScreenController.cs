@@ -5,14 +5,11 @@ using UnityEngine;
 
 public class LoadScreenController : MonoBehaviour
 {
+    public GameStatistics Statistics;
     private TextMeshProUGUI highestScoreText;
     private Canvas LoadingScreen;
     public CanvasGroup c;
     // Start is called before the first frame update
-    protected void Awake()
-    {
-        GameManager.instance.highestScoreUpdate.AddListener(UpdateScore);
-    }
     void Start()
     {
         LoadingScreen = GetComponent<Canvas>();
@@ -36,7 +33,7 @@ public class LoadScreenController : MonoBehaviour
         LoadingScreen.gameObject.SetActive(false);
     }
     
-    void UpdateScore()
+    public void UpdateScore()
     {
         foreach (var textMeshPro in GetComponentsInChildren<TextMeshProUGUI>())
         {
@@ -46,6 +43,6 @@ public class LoadScreenController : MonoBehaviour
                 break;
             }
         }
-        highestScoreText.text = "TOP - " + GameManager.instance.statistics.highestScore.ToString("D8");
+        highestScoreText.text = "TOP - " + Statistics.highestScore.ToString("D8");
     }
 }

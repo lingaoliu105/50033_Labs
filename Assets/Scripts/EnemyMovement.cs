@@ -17,11 +17,7 @@ public class EnemyMovement : MonoBehaviour
 
     private Vector3 startPosition;
     int collisionLayerMask = (1 << 3) | (1 << 7);
-
-    private void Awake()
-    {
-        GameManager.instance.gameReset.AddListener(ResetObject);
-    }
+    
 
     void Start()
     {

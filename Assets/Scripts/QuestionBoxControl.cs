@@ -17,12 +17,6 @@ public class QuestionBoxControl : MonoBehaviour,IPowerupController
     public bool willSpawn;
 
     private BasePowerup powerUp;
-    
-
-    private void Awake()
-    {
-        GameManager.instance.gameReset.AddListener(ResetObject);
-    }
 
     // Start is called before the first frame update
     void Start()

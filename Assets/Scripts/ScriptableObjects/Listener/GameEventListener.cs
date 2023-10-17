@@ -23,13 +23,3 @@ public class GameEventListener<T> : MonoBehaviour
         Event.UnregisterListener(this);
     }
 }
-
-public class IntGameEventListener : GameEventListener<int>
-{
-    
-}
-
-public class PowerupGameEventListener : GameEventListener<IPowerUp>
-{
-    
-}

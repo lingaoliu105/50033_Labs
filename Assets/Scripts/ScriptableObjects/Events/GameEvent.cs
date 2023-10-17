@@ -29,16 +29,5 @@ public class GameEvent<T> : ScriptableObject
     }
 }
 
-[CreateAssetMenu(fileName = "IntGameEvent",menuName = "ScriptableObjects/IntGameEvent",order = 4)]
-public class IntGameEvent : GameEvent<int>
-{
-    
-}
-
-[CreateAssetMenu(fileName = "PowerupGameEvent",menuName = "ScriptableObjects/PowerupGameEvent",order = 5)]
-public class PowerupGameEvent : GameEvent<IPowerUp>
-{
-    
-}
 
 

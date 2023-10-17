@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 7ef026a5c5f7f1b4bbc1b24bcf36c8eb, type: 3}
   m_Name: OnPowerupCollected
-  m_EditorClassIdentifier: Assembly-CSharp::PowerupGameEvent
+  m_EditorClassIdentifier: 

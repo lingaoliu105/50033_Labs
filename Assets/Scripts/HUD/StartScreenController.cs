@@ -5,19 +5,16 @@ using UnityEngine;
 
 public class StartScreenController : MonoBehaviour
 {
+    public GameStatistics Statistics;
     private TextMeshProUGUI highestScoreText;
     // Start is called before the first frame update
-    protected void Awake()
-    {
-        GameManager.instance.highestScoreUpdate.AddListener(UpdateScore);
-    }
     void Start()
     {
         UpdateScore();
     }
     
 
-    void UpdateScore()
+    public void UpdateScore()
     {
         foreach (var textMeshPro in GetComponentsInChildren<TextMeshProUGUI>())
         {
@@ -27,6 +24,6 @@ public class StartScreenController : MonoBehaviour
                 break;
             }
         }
-        highestScoreText.text = "TOP - " + GameManager.instance.statistics.highestScore.ToString("D8");
+        highestScoreText.text = "TOP - " + Statistics.highestScore.ToString("D8");
     }
 }

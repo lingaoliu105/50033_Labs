@@ -12,22 +12,7 @@ public class BgmController : MonoBehaviour
     {
         BgmAudio = GetComponent<AudioSource>();
     }
-
-    private void Awake()
-    {
-        GameManager gm = GameManager.instance;
-        gm.playMusic.AddListener(PlayMusic);
-        gm.gamePause.AddListener(PauseMusic);
-        gm.gameResume.AddListener(PlayMusic);
-        gm.gameReset.AddListener(PlayMusic);
-        gm.gameOver.AddListener(StopMusic);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
     public void PlayMusic()
     {
         gameStarted = true; 
@@ -39,7 +24,7 @@ public class BgmController : MonoBehaviour
         GetComponent<AudioSource>().Pause();
     }
 
-    public void StopMusic(int i)
+    public void StopMusic()
     {
         GetComponent<AudioSource>().Stop();
     }

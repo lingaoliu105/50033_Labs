@@ -27,9 +27,12 @@ public class CameraController : MonoBehaviour
     private Vector3 velocity = new Vector3(0, 0, 0);
     private Vector3 targetPosition;
     public float playerHeight = 2.0f;
+
+    private Vector3 startPosition;
     // Start is called before the first frame update
     void Start()
     {
+        startPosition = transform.position;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         // get coordinate of the bottomleft of the viewport
         // z doesn't matter since the camera is orthographic
@@ -110,5 +113,10 @@ public class CameraController : MonoBehaviour
         {
             this.transform.position = new Vector3(this.transform.position.x, lowY+viewportHalfHeight, this.transform.position.z);
         }
+    }
+    public void GameRestart()
+    {
+        // reset camera position
+        transform.position = startPosition;
     }
 }

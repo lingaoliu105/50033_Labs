@@ -6,6 +6,6 @@ public class BackToMain : MonoBehaviour,IInteractiveButton
 {
     public void ButtonClick()
     {
-        GameManager.instance.BackToMainCasllback();
+        throw new System.NotImplementedException();
     }
 }
