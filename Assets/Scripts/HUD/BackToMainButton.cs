@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ResetHighScoreButton : MonoBehaviour,IInteractiveButton
+public class BackToMainButton : MonoBehaviour,IInteractiveButton
 {
-    public UnityEvent resetHighScoreEvent;
+    public UnityEvent backToMainEvent;
     public void ButtonClick()
     {
-        resetHighScoreEvent.Invoke();
+        backToMainEvent.Invoke();
     }
 }

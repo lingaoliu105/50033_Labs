@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class HUDManager : MonoBehaviour
 {
@@ -58,6 +59,8 @@ public class HUDManager : MonoBehaviour
         _loadScreenController.ShowLoadingScreen();
         yield return new WaitForSeconds(1);
         gameScreen.gameObject.SetActive(true);
+        
+        // TODO: implement play music
         // GameManager.instance.PlayMusic();
     }
     
