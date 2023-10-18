@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 1332268969506230633}
   - component: {fileID: 1523942712393651707}
   - component: {fileID: 1526093885027407165}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Mario
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ MonoBehaviour:
   speed: 15
   maxSpeed: 45
   upSpeed: 16
-  marioFaceRight: {fileID: 0}
+  marioFaceRight: {fileID: 0, guid: 0da4f55a88e33d9479e2767d27cb4cd7, type: 2}
   defaultPosition: {x: 0, y: 1.25, z: 0}
   marioAnimator: {fileID: 8059978848613566690}
   marioAudio: {fileID: 2941827131710938641}
@@ -232,7 +232,7 @@ Animator:
   m_GameObject: {fileID: 7036721868022725217}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bdcc168e3f4aaa44d8ad6ace8e0eb79c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 95541cf2a46b51f42849fd817f2531f1, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -252,7 +252,8 @@ AudioSource:
   m_GameObject: {fileID: 7036721868022725217}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -4767725510076888901, guid: f9be79d6b96a31c40ba3af8e84fe1c88, type: 2}
+  OutputAudioMixerGroup: {fileID: -4767725510076888901, guid: f9be79d6b96a31c40ba3af8e84fe1c88,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: bc5ca5e0703c54692a186434e1149ccd, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -441,7 +442,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: ad1fdf6f73090fc48baacb02dd7e731d, type: 3}
+  m_Actions: {fileID: -944628639613478452, guid: ad1fdf6f73090fc48baacb02dd7e731d,
+    type: 3}
   m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
@@ -576,7 +578,8 @@ AudioSource:
   m_GameObject: {fileID: 7036721868022725217}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 6516117674630200971, guid: f9be79d6b96a31c40ba3af8e84fe1c88, type: 2}
+  OutputAudioMixerGroup: {fileID: 6516117674630200971, guid: f9be79d6b96a31c40ba3af8e84fe1c88,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: c7a3ffadf9f8675439297a66d0fc36e0, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1

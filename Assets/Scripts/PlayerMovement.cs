@@ -219,7 +219,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (value == -1 && _faceRightState)
         {
-            _faceRightState = false;
+            updateMarioShouldFaceRight(false);
             _marioSprite.flipX = true;
             if (_marioBody.velocity.x > 0.05f)
             {
@@ -228,7 +228,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (value == 1 && !_faceRightState)
         {
-            _faceRightState = true;
+            updateMarioShouldFaceRight(true);
             _marioSprite.flipX = false;
             if (_marioBody.velocity.x < -0.05f)
             {
@@ -236,6 +236,13 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+    private void updateMarioShouldFaceRight(bool value)
+    {
+        _faceRightState = value;
+        marioFaceRight.SetValue(_faceRightState);
+    }
+    
+  
 
     public void ResetObject()
     {
