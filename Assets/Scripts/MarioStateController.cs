@@ -19,18 +19,23 @@ public class MarioStateController : StateController
         GameRestart(); // clear powerup in the beginning, go to start state
     }
 
+    private int deathTime =0;
     public new void Update()
     {
         base.Update();
-        if (currentState.name == "DeadMario")
+        if (currentState.name == "DeadMario" && deathTime==0)
         {
+            gameObject.GetComponent<PlayerMovement>().PlayDeathImpulse();
             StartCoroutine(GameOverCoroutine());
+            deathTime++;
         }
     }
 
     IEnumerator GameOverCoroutine()
     {
         yield return new WaitForSeconds(2);
+        Time.timeScale = 0.0f;
+        GameRestart();
         gameOver.Invoke();
     }
 

@@ -102,11 +102,6 @@ public class PlayerMovement : MonoBehaviour
             else
             {
                 DamageMario();
-                // play death animation
-                // marioAnimator.Play("mario_die");
-                // marioDeath.PlayOneShot(marioDeath.clip);
-                // alive = false;
-
             }
             
         }
@@ -151,7 +146,7 @@ public class PlayerMovement : MonoBehaviour
         marioAudio.PlayOneShot(marioAudio.clip);
     }
 
-    void PlayDeathImpulse()
+    public void PlayDeathImpulse()
     {
         _marioBody.AddForce(Vector2.up * deathImpulse, ForceMode2D.Impulse);
     }

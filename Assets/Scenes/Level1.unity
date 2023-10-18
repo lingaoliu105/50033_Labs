@@ -3435,6 +3435,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6227390772856762243, guid: 8cb67dcc07bae6a4d9b0674b34971ffa, type: 3}
+      propertyPath: deathImpulse
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6227390772856762243, guid: 8cb67dcc07bae6a4d9b0674b34971ffa, type: 3}
       propertyPath: marioFaceRight
       value: 
       objectReference: {fileID: 11400000, guid: 0da4f55a88e33d9479e2767d27cb4cd7, type: 2}
