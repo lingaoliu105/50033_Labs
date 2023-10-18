@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c62a43f92981948a040c092a103e25, type: 3}
   m_Name: SetupDeadMario
   m_EditorClassIdentifier: 
-  animatorController: {fileID: 9100000, guid: cb2d1c4b251184641af015a87c84a1ec, type: 2}
+  animatorController: {fileID: 9100000, guid: 95541cf2a46b51f42849fd817f2531f1, type: 2}

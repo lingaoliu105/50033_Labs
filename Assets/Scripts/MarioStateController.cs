@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MarioStateController : StateController
 {
@@ -16,8 +17,21 @@ public class MarioStateController : StateController
     {
         base.Start();
         GameRestart(); // clear powerup in the beginning, go to start state
-        // ActionManager am = gameObject.GetComponent<ActionManager>();
-        // am.attack.AddListener(Fire);
+    }
+
+    public new void Update()
+    {
+        base.Update();
+        if (currentState.name == "DeadMario")
+        {
+            StartCoroutine(GameOverCoroutine());
+        }
+    }
+
+    IEnumerator GameOverCoroutine()
+    {
+        yield return new WaitForSeconds(2);
+        gameOver.Invoke();
     }
 
     // this should be added to the GameRestart EventListener as callback
@@ -34,8 +48,10 @@ public class MarioStateController : StateController
         currentPowerupType = i;
     }
     
+    
     private SpriteRenderer spriteRenderer;
     public GameConstants gameConstants;
+    public UnityEvent gameOver;
 
     // other methods
     public void SetRendererToFlicker()

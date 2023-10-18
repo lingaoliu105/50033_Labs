@@ -1224,6 +1224,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &664541165 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7036721868022725217, guid: 8cb67dcc07bae6a4d9b0674b34971ffa, type: 3}
+  m_PrefabInstance: {fileID: 1713408497}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &664541178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664541165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eff7c8c6d83ab92449877f36d568f92a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startState: {fileID: 11400000, guid: 3a048cbc03391f542b5ccfd642a972e9, type: 2}
+  previousState: {fileID: 0}
+  currentState: {fileID: 11400000, guid: 3a048cbc03391f542b5ccfd642a972e9, type: 2}
+  remainState: {fileID: 11400000, guid: 7cfb5f98158d01a40b972b438a3a0e1d, type: 2}
+  transitionStateChanged: 0
+  stateTimeElapsed: 0
+  currentPowerupType: -1
+  shouldBeNextState: -1
+  gameConstants: {fileID: 11400000, guid: 1a0afca678bb80f44a882039494157d2, type: 2}
 --- !u!1001 &691064603
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3340,6 +3366,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1523942712393651707, guid: 8cb67dcc07bae6a4d9b0674b34971ffa, type: 3}
+      propertyPath: gameOver.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1523942712393651707, guid: 8cb67dcc07bae6a4d9b0674b34971ffa, type: 3}
+      propertyPath: gameOver.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1523942712393651707, guid: 8cb67dcc07bae6a4d9b0674b34971ffa, type: 3}
+      propertyPath: gameOver.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: 1442baf63e6d60e4cbc830045419992e, type: 2}
+    - target: {fileID: 1523942712393651707, guid: 8cb67dcc07bae6a4d9b0674b34971ffa, type: 3}
+      propertyPath: gameOver.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1523942712393651707, guid: 8cb67dcc07bae6a4d9b0674b34971ffa, type: 3}
+      propertyPath: gameOver.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Raise
+      objectReference: {fileID: 0}
+    - target: {fileID: 1523942712393651707, guid: 8cb67dcc07bae6a4d9b0674b34971ffa, type: 3}
+      propertyPath: gameOver.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameEvent`1[[UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1523942712393651707, guid: 8cb67dcc07bae6a4d9b0674b34971ffa, type: 3}
+      propertyPath: gameOver.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2448558218697293506, guid: 8cb67dcc07bae6a4d9b0674b34971ffa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3391,7 +3445,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7036721868022725217, guid: 8cb67dcc07bae6a4d9b0674b34971ffa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 664541178}
   m_SourcePrefab: {fileID: 100100000, guid: 8cb67dcc07bae6a4d9b0674b34971ffa, type: 3}
 --- !u!1 &1735470095
 GameObject:
@@ -4416,7 +4473,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8582204322227075578, guid: 3c13eebce0d49bd43bade48e78635d21, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 21.82
+      value: -3.91
       objectReference: {fileID: 0}
     - target: {fileID: 8582204322227075578, guid: 3c13eebce0d49bd43bade48e78635d21, type: 3}
       propertyPath: m_LocalPosition.y

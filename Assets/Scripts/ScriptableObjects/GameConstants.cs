@@ -20,5 +20,5 @@ public class GameConstants : ScriptableObject
      public float goombaPatrolTime;
      public float goombaMaxOffset;
 
-     public int flickerInterval;
+     public float flickerInterval;
 }

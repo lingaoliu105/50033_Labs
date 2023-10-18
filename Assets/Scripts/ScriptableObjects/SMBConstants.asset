@@ -14,3 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scene2Name: world1-2
   scene2DefaultPosition: {x: 0, y: 0, z: 0}
+  maxLives: 0
+  speed: 0
+  maxSpeed: 0
+  upSpeed: 0
+  deathImpulse: 0
+  marioStartingPosition: {x: 0, y: 0, z: 0}
+  goombaPatrolTime: 0
+  goombaMaxOffset: 0
+  flickerInterval: 0.1

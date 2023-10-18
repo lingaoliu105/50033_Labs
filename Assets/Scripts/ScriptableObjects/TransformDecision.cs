@@ -33,3 +33,4 @@ public struct StateTransformMap
     public MarioState fromState;
     public PowerupType powerupCollected;
 }
+

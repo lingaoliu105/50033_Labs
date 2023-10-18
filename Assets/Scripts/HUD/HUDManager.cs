@@ -60,10 +60,6 @@ public class HUDManager : MonoBehaviour
         yield return new WaitForSeconds(1);
         gameScreen.gameObject.SetActive(true);
         gameStart.Invoke();
-        
-        
-        // TODO: implement play music
-        // GameManager.instance.PlayMusic();
     }
     
     public void GameStart()

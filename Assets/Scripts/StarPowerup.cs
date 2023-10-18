@@ -32,8 +32,12 @@ public class StarPowerup : BasePowerup
 
     public override void ApplyPowerup(MonoBehaviour i)
     {
-        // TODO: complete this
-        Debug.Log("Star Powerup");
+        BuffStateController mario;
+        bool result = i.TryGetComponent<BuffStateController>(out mario);
+        if (result)
+        {
+            mario.SetPowerup(this.powerupType);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
