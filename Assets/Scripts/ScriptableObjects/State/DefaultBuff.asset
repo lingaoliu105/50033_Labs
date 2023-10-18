@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27c71cd5bbdad4747999250915937bf8, type: 3}
   m_Name: DefaultBuff
   m_EditorClassIdentifier: 
-  setupActions: []
+  setupActions:
+  - {fileID: 11400000, guid: 5eb72260f55c7b14fa6caa664ca16499, type: 2}
   actions: []
   eventTriggeredActions: []
   exitActions: []
