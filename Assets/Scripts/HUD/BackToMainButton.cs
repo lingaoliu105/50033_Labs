@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class StartButton : MonoBehaviour,IInteractiveButton
+public class BackToMainButton : MonoBehaviour,IInteractiveButton
 {
-    public UnityEvent startGame;
+    public UnityEvent backToMainEvent;
     public void ButtonClick()
     {
-        startGame.Invoke();
+        backToMainEvent.Invoke();
     }
 }

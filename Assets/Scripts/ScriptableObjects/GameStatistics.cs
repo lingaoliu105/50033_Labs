@@ -8,4 +8,5 @@ public class GameStatistics : ScriptableObject
 {
     public int score;
     public int highestScore;
+    public int currentScene;
 }

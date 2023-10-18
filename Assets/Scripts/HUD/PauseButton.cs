@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using Image = UnityEngine.UI.Image;
 
 public class PauseButton : MonoBehaviour,IInteractiveButton
@@ -12,6 +13,9 @@ public class PauseButton : MonoBehaviour,IInteractiveButton
     public Sprite playIcon;
 
     private Image image;
+
+    public UnityEvent pauseEvent;
+    public UnityEvent resumeEvent;
     void Start()
     {
         image = GetComponent<Image>();
@@ -21,12 +25,14 @@ public class PauseButton : MonoBehaviour,IInteractiveButton
     {
         if (isPaused)
         {
-            // GameManager.instance.ResumeGame();
+            Time.timeScale = 1.0f;
+            resumeEvent.Invoke();
             image.sprite = pauseIcon;
         }
         else
         {
-            // GameManager.instance.PauseGame();
+            Time.timeScale = 0.0f;
+            pauseEvent.Invoke();
             image.sprite = playIcon;
         }
         isPaused = !isPaused;
