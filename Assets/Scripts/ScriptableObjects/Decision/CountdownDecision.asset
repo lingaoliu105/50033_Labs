@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2245c06791fe254d80df1ad9bf8bf78, type: 3}
   m_Name: CountdownDecision
   m_EditorClassIdentifier: 
-  buffDuration: 2
+  buffDuration: 20

@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: SetupInvincibility
   m_EditorClassIdentifier: 
   invincibilityStart: {fileID: 0}
+  animatorController: {fileID: 9100000, guid: cb2d1c4b251184641af015a87c84a1ec, type: 2}

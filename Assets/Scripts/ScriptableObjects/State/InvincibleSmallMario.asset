@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   setupActions:
   - {fileID: 11400000, guid: 51aed50ffed0ae44bbab0411fcb0939e, type: 2}
-  - {fileID: 11400000, guid: 1816573846b40d6468719a6e0e447d70, type: 2}
   - {fileID: 11400000, guid: 5eb72260f55c7b14fa6caa664ca16499, type: 2}
   actions: []
   eventTriggeredActions: []

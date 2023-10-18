@@ -11,7 +11,6 @@ public abstract class StateController : MonoBehaviour
     public bool transitionStateChanged = false;
     [HideInInspector] public float stateTimeElapsed;
     
-
     private bool isActive = true;
 
     public virtual void Start()
@@ -77,21 +76,5 @@ public abstract class StateController : MonoBehaviour
         currentState.UpdateState(this);
     }
     /********************************/
-
-
-    public void BlinkSprite()
-    {
-        StartCoroutine(blinkCoroutine(gameObject.GetComponent<SpriteRenderer>()));
-    }
-
-    IEnumerator blinkCoroutine(SpriteRenderer spriteRenderer)
-    {
-        while (currentState.name=="InvincibleSmallMario")
-        {
-            Debug.Log(currentState.name);
-            spriteRenderer.enabled = !spriteRenderer.enabled;
-            yield return new WaitForSeconds(0.5f);
-        }
-        Debug.Log(currentState.name);
-    }
+    
 }
