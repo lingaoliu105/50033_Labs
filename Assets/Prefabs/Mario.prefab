@@ -413,6 +413,21 @@ MonoBehaviour:
   point:
     m_PersistentCalls:
       m_Calls: []
+  attack:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1523942712393651707}
+        m_TargetAssemblyTypeName: MarioStateController, Assembly-CSharp
+        m_MethodName: Fire
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5498897658890405432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -530,6 +545,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 18b9ff44-e60b-41b6-82c2-f94e63153c5d
     m_ActionName: gamePlay/point[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8150153149604785977}
+        m_TargetAssemblyTypeName: ActionManager, Assembly-CSharp
+        m_MethodName: OnAttackAction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: fa30fc6b-f05e-4314-a04b-8aa27fd6ffd2
+    m_ActionName: gamePlay/attack[/Keyboard/z]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: SuperMarioBro
   m_DefaultActionMap: gamePlay

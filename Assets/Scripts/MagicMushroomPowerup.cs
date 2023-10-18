@@ -32,8 +32,13 @@ public class MagicMushroomPowerup : BasePowerup
 
     public override void ApplyPowerup(MonoBehaviour i)
     {
-        // TODO: complete this
-        Debug.Log("Magic Powerup");
+        // try
+        MarioStateController mario;
+        bool result = i.TryGetComponent<MarioStateController>(out mario);
+        if (result)
+        {
+            mario.SetPowerup(this.powerupType);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -41,7 +46,6 @@ public class MagicMushroomPowerup : BasePowerup
         
         if (other.gameObject.CompareTag("Player") && spawned)
         {
-            // TODO: take effect
             Hide();
             audio.PlayOneShot(audio.clip);
             ApplyPowerup(other.gameObject.GetComponent<MonoBehaviour>());

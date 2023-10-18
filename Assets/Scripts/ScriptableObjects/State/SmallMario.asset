@@ -12,9 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27c71cd5bbdad4747999250915937bf8, type: 3}
   m_Name: SmallMario
   m_EditorClassIdentifier: 
-  setupActions: []
+  setupActions:
+  - {fileID: 11400000, guid: d3aabde7da91a26439bad59fcc7990da, type: 2}
+  - {fileID: 11400000, guid: 5eb72260f55c7b14fa6caa664ca16499, type: 2}
   actions: []
   eventTriggeredActions: []
   exitActions: []
-  transitions: []
+  transitions:
+  - decision: {fileID: 11400000, guid: 79f577240e20c3f41aee77d616cb800c, type: 2}
+    trueState: {fileID: 11400000, guid: 42a6fd4b571330847a65dea610d703e4, type: 2}
+    falseState: {fileID: 11400000, guid: 7cfb5f98158d01a40b972b438a3a0e1d, type: 2}
+  - decision: {fileID: 11400000, guid: 2e294a1ee51708b4f8a24d07a0f9008e, type: 2}
+    trueState: {fileID: 11400000, guid: 8731a917f3b1dad4c905f15b1c1c29bf, type: 2}
+    falseState: {fileID: 11400000, guid: 7cfb5f98158d01a40b972b438a3a0e1d, type: 2}
   sceneGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}

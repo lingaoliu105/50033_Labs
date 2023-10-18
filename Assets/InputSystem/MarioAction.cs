@@ -71,6 +71,15 @@ public partial class @MarioAction: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""attack"",
+                    ""type"": ""Button"",
+                    ""id"": ""fa30fc6b-f05e-4314-a04b-8aa27fd6ffd2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -172,6 +181,17 @@ public partial class @MarioAction: IInputActionCollection2, IDisposable
                     ""action"": ""point"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""36a19b1b-bf74-4db4-9e9a-af1cdcaaa54f"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""SuperMarioBro"",
+                    ""action"": ""attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -202,6 +222,7 @@ public partial class @MarioAction: IInputActionCollection2, IDisposable
         m_gamePlay_jumphold = m_gamePlay.FindAction("jumphold", throwIfNotFound: true);
         m_gamePlay_click = m_gamePlay.FindAction("click", throwIfNotFound: true);
         m_gamePlay_point = m_gamePlay.FindAction("point", throwIfNotFound: true);
+        m_gamePlay_attack = m_gamePlay.FindAction("attack", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -268,6 +289,7 @@ public partial class @MarioAction: IInputActionCollection2, IDisposable
     private readonly InputAction m_gamePlay_jumphold;
     private readonly InputAction m_gamePlay_click;
     private readonly InputAction m_gamePlay_point;
+    private readonly InputAction m_gamePlay_attack;
     public struct GamePlayActions
     {
         private @MarioAction m_Wrapper;
@@ -277,6 +299,7 @@ public partial class @MarioAction: IInputActionCollection2, IDisposable
         public InputAction @jumphold => m_Wrapper.m_gamePlay_jumphold;
         public InputAction @click => m_Wrapper.m_gamePlay_click;
         public InputAction @point => m_Wrapper.m_gamePlay_point;
+        public InputAction @attack => m_Wrapper.m_gamePlay_attack;
         public InputActionMap Get() { return m_Wrapper.m_gamePlay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -301,6 +324,9 @@ public partial class @MarioAction: IInputActionCollection2, IDisposable
             @point.started += instance.OnPoint;
             @point.performed += instance.OnPoint;
             @point.canceled += instance.OnPoint;
+            @attack.started += instance.OnAttack;
+            @attack.performed += instance.OnAttack;
+            @attack.canceled += instance.OnAttack;
         }
 
         private void UnregisterCallbacks(IGamePlayActions instance)
@@ -320,6 +346,9 @@ public partial class @MarioAction: IInputActionCollection2, IDisposable
             @point.started -= instance.OnPoint;
             @point.performed -= instance.OnPoint;
             @point.canceled -= instance.OnPoint;
+            @attack.started -= instance.OnAttack;
+            @attack.performed -= instance.OnAttack;
+            @attack.canceled -= instance.OnAttack;
         }
 
         public void RemoveCallbacks(IGamePlayActions instance)
@@ -353,5 +382,6 @@ public partial class @MarioAction: IInputActionCollection2, IDisposable
         void OnJumphold(InputAction.CallbackContext context);
         void OnClick(InputAction.CallbackContext context);
         void OnPoint(InputAction.CallbackContext context);
+        void OnAttack(InputAction.CallbackContext context);
     }
 }

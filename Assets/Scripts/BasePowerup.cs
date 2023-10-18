@@ -56,6 +56,8 @@ public abstract class BasePowerup : MonoBehaviour, IPowerUp
     public abstract void Spawn();
 
     public abstract void ApplyPowerup(MonoBehaviour i);
-    public PowerupType powerupType { get; }
-    public bool hasSpawned { get; }
+
+    public PowerupType powerupType => type;
+
+    public bool hasSpawned => spawned;
 }

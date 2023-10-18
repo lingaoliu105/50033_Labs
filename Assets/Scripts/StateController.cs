@@ -79,6 +79,19 @@ public abstract class StateController : MonoBehaviour
     /********************************/
 
 
+    public void BlinkSprite()
+    {
+        StartCoroutine(blinkCoroutine(gameObject.GetComponent<SpriteRenderer>()));
+    }
 
-
+    IEnumerator blinkCoroutine(SpriteRenderer spriteRenderer)
+    {
+        while (currentState.name=="InvincibleSmallMario")
+        {
+            Debug.Log(currentState.name);
+            spriteRenderer.enabled = !spriteRenderer.enabled;
+            yield return new WaitForSeconds(0.5f);
+        }
+        Debug.Log(currentState.name);
+    }
 }
