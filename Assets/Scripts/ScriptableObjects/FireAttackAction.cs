@@ -7,8 +7,8 @@ using UnityEngine;
 public class FireAttackAction : Action
 {
     public int maxPrefabInScene = 3;
-    public float impulseForce = 1;
-    public float degree = 45;
+    public float impulseForce = 3;
+    public float degree = -10;
     public GameObject attackPrefab;
     // a scriptable object updated by PlayerMovement / PlayerController to store current Mario's facing
     public BoolVariable marioFaceRight;
@@ -28,6 +28,7 @@ public class FireAttackAction : Action
             {
                 // compute direction vector
                 Vector2 direction = CalculateDirection(degree, marioFaceRight.Value);
+                Debug.Log(direction);
                 // Apply a rightward impulse force to the object
                 rb.AddForce(direction * impulseForce, ForceMode2D.Impulse);
             }

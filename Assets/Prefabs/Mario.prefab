@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 1332268969506230633}
   - component: {fileID: 1523942712393651707}
   - component: {fileID: 1526093885027407165}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Mario
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -181,6 +181,7 @@ MonoBehaviour:
   speed: 15
   maxSpeed: 45
   upSpeed: 16
+  marioFaceRight: {fileID: 11400000, guid: 0da4f55a88e33d9479e2767d27cb4cd7, type: 2}
   defaultPosition: {x: 0, y: 1.25, z: 0}
   marioAnimator: {fileID: 8059978848613566690}
   marioAudio: {fileID: 2941827131710938641}
@@ -231,7 +232,7 @@ Animator:
   m_GameObject: {fileID: 7036721868022725217}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: cb2d1c4b251184641af015a87c84a1ec, type: 2}
+  m_Controller: {fileID: 9100000, guid: 95541cf2a46b51f42849fd817f2531f1, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

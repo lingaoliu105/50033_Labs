@@ -13,6 +13,7 @@ TagManager:
   - board
   - win
   - PowerUp
+  - Fireball
   layers:
   - Default
   - TransparentFX
@@ -25,8 +26,8 @@ TagManager:
   - Coins
   - Background
   - PowerUp
-  - 
-  - 
+  - Fireball
+  - Player
   - 
   - 
   - 
