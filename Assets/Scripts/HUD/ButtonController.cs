@@ -11,6 +11,7 @@ public class ButtonController : MonoBehaviour, IInteractiveButton
 
     public void ButtonClick()
     {
+        Time.timeScale = 1.0f;
         gameRestart.Invoke();
     }
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -10,9 +11,13 @@ public class LoadScreenController : MonoBehaviour
     private Canvas LoadingScreen;
     public CanvasGroup c;
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         LoadingScreen = GetComponent<Canvas>();
+    }
+
+    void Start()
+    {
         foreach (var textMeshPro in GetComponentsInChildren<TextMeshProUGUI>())
         {
             if (textMeshPro.gameObject.name == "HighScore")
@@ -26,6 +31,7 @@ public class LoadScreenController : MonoBehaviour
 
     public void ShowLoadingScreen()
     {
+        LoadingScreen.gameObject.SetActive(true);
         UpdateScore();
         StartCoroutine(Fade());
     }
