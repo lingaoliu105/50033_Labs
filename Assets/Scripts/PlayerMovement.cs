@@ -38,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
     public float multiImpulse = 12.0f;
 
     public UnityEvent<int> incrementScore;
+    public UnityEvent<int> updateHighest;
 
     public GameStatistics stats;
     // state
@@ -95,6 +96,11 @@ public class PlayerMovement : MonoBehaviour
                 }
 
                 stats.score++;
+                if (stats.score > stats.highestScore)
+                {
+                    stats.highestScore = stats.score;
+                    updateHighest.Invoke(stats.highestScore);
+                }
                 incrementScore.Invoke(stats.score);
                 // TODO: update score value
                 Jump(multiImpulse);

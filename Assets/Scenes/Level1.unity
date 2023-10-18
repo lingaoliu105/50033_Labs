@@ -622,6 +622,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: QuestionBox
       objectReference: {fileID: 0}
+    - target: {fileID: 7179737496884358747, guid: 0bf8c3c83b0280a4c9b262414091b33b, type: 3}
+      propertyPath: evt.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179737496884358747, guid: 0bf8c3c83b0280a4c9b262414091b33b, type: 3}
+      propertyPath: evt.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1376,6 +1384,26 @@ PrefabInstance:
       propertyPath: gameResetEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 3612224871711721960, guid: c6053123e2f28944eb02454efafa1b63, type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3612224871711721960, guid: c6053123e2f28944eb02454efafa1b63, type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpdateHighScore
+      objectReference: {fileID: 0}
+    - target: {fileID: 3612224871711721960, guid: c6053123e2f28944eb02454efafa1b63, type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: StartScreenController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3612224871711721960, guid: c6053123e2f28944eb02454efafa1b63, type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4877422581694649527, guid: c6053123e2f28944eb02454efafa1b63, type: 3}
+      propertyPath: stats
+      value: 
+      objectReference: {fileID: 11400000, guid: fe0713c93f640504bbf98bf44c39805b, type: 2}
     - target: {fileID: 6449274006701361259, guid: c6053123e2f28944eb02454efafa1b63, type: 3}
       propertyPath: m_IsActive
       value: 0
