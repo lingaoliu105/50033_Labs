@@ -101,7 +101,10 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                DamageMario();
+                if (gameObject.GetComponent<BuffStateController>().currentState.name != "InvincibleBuff")
+                {
+                    DamageMario();
+                }
             }
             
         }
