@@ -13,6 +13,14 @@ public class LoadScreenController : MonoBehaviour
     void Start()
     {
         LoadingScreen = GetComponent<Canvas>();
+        foreach (var textMeshPro in GetComponentsInChildren<TextMeshProUGUI>())
+        {
+            if (textMeshPro.gameObject.name == "HighScore")
+            {
+                highestScoreText = textMeshPro;
+                break;
+            }
+        }
         UpdateScore();
     }
 
@@ -35,12 +43,15 @@ public class LoadScreenController : MonoBehaviour
     
     public void UpdateScore()
     {
-        foreach (var textMeshPro in GetComponentsInChildren<TextMeshProUGUI>())
+        if (highestScoreText == null)
         {
-            if (textMeshPro.gameObject.name == "HighScore")
+            foreach (var textMeshPro in GetComponentsInChildren<TextMeshProUGUI>())
             {
-                highestScoreText = textMeshPro;
-                break;
+                if (textMeshPro.gameObject.name == "HighScore")
+                {
+                    highestScoreText = textMeshPro;
+                    break;
+                }
             }
         }
         highestScoreText.text = "TOP - " + Statistics.highestScore.ToString("D8");

@@ -25,12 +25,14 @@ public class PauseButton : MonoBehaviour,IInteractiveButton
     {
         if (isPaused)
         {
-            pauseEvent.Invoke();
+            Time.timeScale = 1.0f;
+            resumeEvent.Invoke();
             image.sprite = pauseIcon;
         }
         else
         {
-            resumeEvent.Invoke();
+            Time.timeScale = 0.0f;
+            pauseEvent.Invoke();
             image.sprite = playIcon;
         }
         isPaused = !isPaused;

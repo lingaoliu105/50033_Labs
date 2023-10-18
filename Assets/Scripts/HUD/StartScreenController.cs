@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -5,16 +6,10 @@ using UnityEngine;
 
 public class StartScreenController : MonoBehaviour
 {
-    public GameStatistics Statistics;
     private TextMeshProUGUI highestScoreText;
-    // Start is called before the first frame update
-    void Start()
-    {
-        UpdateScore();
-    }
-    
+    public GameStatistics stats;
 
-    public void UpdateScore()
+    private void Start()
     {
         foreach (var textMeshPro in GetComponentsInChildren<TextMeshProUGUI>())
         {
@@ -24,6 +19,11 @@ public class StartScreenController : MonoBehaviour
                 break;
             }
         }
-        highestScoreText.text = "TOP - " + Statistics.highestScore.ToString("D8");
+        highestScoreText.text=  highestScoreText.text = "TOP - " + stats.highestScore.ToString("D8");
+    }
+
+    public void UpdateHighScore(int newScore)
+    {
+        highestScoreText.text = "TOP - " + newScore.ToString("D8");
     }
 }

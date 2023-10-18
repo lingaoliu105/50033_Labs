@@ -5,9 +5,11 @@ using UnityEngine.Events;
 
 public class ResetHighScoreButton : MonoBehaviour,IInteractiveButton
 {
-    public UnityEvent resetHighScoreEvent;
+    public UnityEvent<int> resetHighScoreEvent;
+    public GameStatistics stats;
     public void ButtonClick()
     {
-        resetHighScoreEvent.Invoke();
+        stats.highestScore = 0;
+        resetHighScoreEvent.Invoke(0);
     }
 }

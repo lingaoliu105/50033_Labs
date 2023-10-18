@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
@@ -34,10 +35,16 @@ public class PlayerMovement : MonoBehaviour
     private bool jumpState = false;
 
     public float multiImpulse = 12.0f;
+
+    public UnityEvent<int> incrementScore;
+
+    public GameStatistics stats;
     // state
     [System.NonSerialized]
     public bool alive = true;
-    
+
+    public UnityEvent gameOver;
+
 
     void Start()
     {
@@ -85,7 +92,10 @@ public class PlayerMovement : MonoBehaviour
                 {
                     enemy.GetComponent<EnemyMovement>().Stomped();
                 }
-                //GameManager.instance.IncreaseScore(1);
+
+                stats.score++;
+                incrementScore.Invoke(stats.score);
+                // TODO: update score value
                 Jump(multiImpulse);
             }
             else
@@ -102,18 +112,24 @@ public class PlayerMovement : MonoBehaviour
         if (col.gameObject.CompareTag("Coin") && alive)
         {
             Destroy(col.gameObject);
-            Debug.Log("Get 1 coin here");
             coinSound.PlayOneShot(coinSound.clip);
-            //GameManager.instance.IncreaseScore(1);
+            stats.score++;
+            incrementScore.Invoke(stats.score);
         }
 
         if (col.gameObject.CompareTag("oneTimePlatform") && alive)
         {
 
             Destroy(col.gameObject);
-            Debug.Log("Get 1 coin here");
-            //GameManager.instance.IncreaseScore(1);
+            stats.score++;
+            incrementScore.Invoke(stats.score);
         }
+    }
+
+    void GameOver()
+    {
+        Time.timeScale = 0.0f;
+        gameOver.Invoke();
     }
 
     bool IsUnderneath(Vector2 point)
