@@ -7,7 +7,7 @@ public class MarioStateController : StateController
 {
     public PowerupType currentPowerupType = PowerupType.Default;
     public MarioState shouldBeNextState = MarioState.Default;
-
+    
     public void Fire()
     {
         this.currentState.DoEventTriggeredActions(this, ActionType.Attack);
@@ -16,6 +16,8 @@ public class MarioStateController : StateController
     {
         base.Start();
         GameRestart(); // clear powerup in the beginning, go to start state
+        // ActionManager am = gameObject.GetComponent<ActionManager>();
+        // am.attack.AddListener(Fire);
     }
 
     // this should be added to the GameRestart EventListener as callback

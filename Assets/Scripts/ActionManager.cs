@@ -9,7 +9,7 @@ public class ActionManager : MonoBehaviour
     public UnityEvent<int> moveCheck;
     public UnityEvent click;
     public UnityEvent point;
-    
+    public UnityEvent attack;
 
     public void OnJumpHoldAction(InputAction.CallbackContext context)
     {
@@ -55,5 +55,10 @@ public class ActionManager : MonoBehaviour
         {
             Vector2 point = context.ReadValue<Vector2>();
         }
+    }
+
+    public void OnAttackAction(InputAction.CallbackContext context)
+    {
+        attack.Invoke();
     }
 }

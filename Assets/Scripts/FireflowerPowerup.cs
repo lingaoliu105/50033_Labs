@@ -21,16 +21,15 @@ public class FireflowerPowerup : BasePowerup
         spawned = true;
         rigidBody.AddForce(Vector2.up * spawnForce, ForceMode2D.Impulse);
     }
-
-    public void Update()
-    {
-        
-    }
-
+    
     public override void ApplyPowerup(MonoBehaviour i)
     {
-        // TODO: complete this
-        Debug.Log("Fireflower Powerup");
+        MarioStateController mario;
+        bool result = i.TryGetComponent<MarioStateController>(out mario);
+        if (result)
+        {
+            mario.SetPowerup(this.powerupType);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)

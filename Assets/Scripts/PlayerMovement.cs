@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
 
     private SpriteRenderer _marioSprite;
     private bool _faceRightState = true;
+    public BoolVariable marioFaceRight;
     public Vector3 defaultPosition;
 
     public Animator marioAnimator;
@@ -100,10 +101,11 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
+                DamageMario();
                 // play death animation
-                marioAnimator.Play("mario_die");
-                marioDeath.PlayOneShot(marioDeath.clip);
-                alive = false;
+                // marioAnimator.Play("mario_die");
+                // marioDeath.PlayOneShot(marioDeath.clip);
+                // alive = false;
 
             }
             
@@ -243,5 +245,15 @@ public class PlayerMovement : MonoBehaviour
         _marioSprite.flipX = false;
         marioAnimator.SetTrigger("gameRestart");
         alive = true;
+    }
+    
+    public void DamageMario()
+    {
+        // GameOverAnimationStart(); // last time Mario dies right away
+
+        // pass this to StateController to see if Mario should start game over
+        // since both state StateController and MarioStateController are on the same gameobject, it's ok to cross-refer between scripts
+        GetComponent<MarioStateController>().SetPowerup(PowerupType.Damage);
+
     }
 }
