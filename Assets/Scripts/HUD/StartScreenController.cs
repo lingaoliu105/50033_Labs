@@ -11,6 +11,7 @@ public class StartScreenController : MonoBehaviour
 
     private void Start()
     {
+        stats.score = 0;
         foreach (var textMeshPro in GetComponentsInChildren<TextMeshProUGUI>())
         {
             if (textMeshPro.gameObject.name == "HighScore")
